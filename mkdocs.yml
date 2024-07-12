@@ -1,0 +1,22 @@
+site_name: TUD-SUMO Wiki
+nav:
+  - Home: index.md
+  - Getting Started: 2_getting_started.md
+  - Basic Simulations: 3_basic_sim.md
+  - Interacting with the Simulation: 4_interactions.md
+  - Tracked Objects: 5_tracked_objs.md
+  - Traffic Control: 6_traffic_control.md
+  - Events: 7_events.md
+  - Plotting Functions: 8_plotting.md
+  - Examples: 9_examples.md
+theme:
+  name: material
+  favicon: img/favicon.ico
+  logo: img/logo.png
+  palette:
+    accent: light blue
+    primary: light blue
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
