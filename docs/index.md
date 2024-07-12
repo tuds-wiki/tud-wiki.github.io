@@ -1,10 +1,12 @@
 # Welcome to the TUD-SUMO Wiki!
 
 ![header](img/header.png)
-<br>
-This is the documentation for the TUD-SUMO package, a research and control-oriented wrapper for SUMO, developed for the DIAMoND lab of TU Delft.
+<br><br>
+This is the documentation for the TUD-SUMO package, a research-oriented wrapper for SUMO<sup>[1]</sup>, developed for the DIAMoND lab at the Technische Universiteit Delft (TUD), the Netherlands.
 
 The main goal of TUD-SUMO is to act as a simplified framework for microscopic traffic simulation that allows researchers and students to focus on the important aspects of their projects; <b>their own work</b>. TUD-SUMO provides an easy and standardised way to simulate a wide range of scenarios whilst facilitating complex interactions. Resulting data can then be saved, summarised and visualised with minimal code.
+
+More information on "Simulation of Urban MObility" (SUMO) can be found in the SUMO documentation: [sumo.dlr.de/docs/](https://sumo.dlr.de/docs/)
 
 The main features of TUD-SUMO include:
 
@@ -16,9 +18,7 @@ The main features of TUD-SUMO include:
   - Plotting functions for a wide range of applications.
   - And <i>more in the future!</i>
 
-<p align="center">
-<img src="img/logos.png" alt="logos" width="50%" marginle>
-</p>
+![logos](img/logos.png)
 
 ## Latest Version
 
@@ -53,10 +53,10 @@ TUD-SUMO was last updated on 12/07/2024. The changenotes for this version are:
   - Changed `'stopped'` to `'is_stopped'` in vehicle data.
   - Removed `'event_n_steps'` and `'event_duration'` from event parameters.
 
-#### Fixes
- - Fixed duplicate IDs when adding objects.
- - Fixed strange behaviour with vehicle removal.
-
 ## Contact
 
 TUD-SUMO is developed by Callum Evans in the DIAMoND lab of TU Delft. For any questions, feedback or bug reports, please contact Callum Evans or submit a query using the form [here](https://forms.office.com/e/pMnGaheier).
+
+## Citations
+
+  1. "Microscopic Traffic Simulation using SUMO"; Pablo Alvarez Lopez, Michael Behrisch, Laura Bieker-Walz, Jakob Erdmann, Yun-Pang Flötteröd, Robert Hilbrich, Leonhard Lücken, Johannes Rummel, Peter Wagner, and Evamarie Wießner. IEEE Intelligent Transportation Systems Conference (ITSC), 2018.
