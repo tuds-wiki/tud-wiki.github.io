@@ -11,11 +11,15 @@ nav:
   - Examples: 9_examples.md
 theme:
   name: material
+  font:
+    text: Open Sans
+  palette:
+    primary: custom
+    accent: custom
   favicon: img/favicon.ico
   logo: img/logo.png
-  palette:
-    accent: light blue
-    primary: light blue
+extra_css:
+- stylesheets/extra.css
 markdown_extensions:
   - admonition
   - pymdownx.details

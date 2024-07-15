@@ -2,13 +2,14 @@
 
 ## Requirements
 
-To run TUD-SUMO, first install SUMO. Platform-specific information on how to do this can be found in the SUMO documentation: [sumo.dlr.de/docs/](https://sumo.dlr.de/docs/)
+To run TUD-SUMO, first install SUMO. Platform-specific information on how to do this can be found in the SUMO documentation: [https://sumo.dlr.de/docs/Installing/](https://sumo.dlr.de/docs/Installing/)
 
 Python 3.10 or later is required to run TUD-SUMO, otherwise, the required dependencies are:
 
   - `traci`
   - `sumolib`
   - `matplotlib`
+  - `mpl-tools`
   - `shapely`
   - `tqdm`
 
@@ -20,7 +21,7 @@ It is recommended to use install the required packages in an environment, such a
 conda create --name tud-sumo
 conda activate tud-sumo
 conda install matplotlib tqdm
-pip install traci sumolib shapely
+pip install traci sumolib mpl-tools shapely
 ```
 
 Conda can then be deactivated later using the command:
