@@ -1,12 +1,20 @@
 # Welcome to the TUD-SUMO Wiki!
+<p align="center">
+  <img src="img/header.png" />
+  <br><br>
+  <a href="https://github.com/tud-sumo/tud_sumo" alt="GitHub">
+        <img src="https://img.shields.io/badge/v3.0.4-%2338A6D6?logo=github&link=https%3A%2F%2Fgithub.com%2Ftud-sumo%2Ftud_sumo
+        " /></a>
+  <a href="https://pypi.org/project/tud-sumo/" alt="PyPI">
+        <img src="https://img.shields.io/badge/PyPI-%2338A6D6?logo=pypi&logoColor=white&link=https%3A%2F%2Fgithub.com%2Ftud-sumo%2Ftud_sumo
+        " /></a>
+</p>
 
-![header](img/header.png)
-<br><br>
 This is the documentation for the TUD-SUMO package, a research-oriented wrapper for SUMO<sup>[1]</sup>, developed for the DIAMoND lab at the Technische Universiteit Delft (TUD), the Netherlands.
 
 The main goal of TUD-SUMO is to act as a simplified framework for microscopic traffic simulation that allows researchers and students to focus on the important aspects of their projects; <b>their own work</b>, instead of simulation code. TUD-SUMO provides an easy and standardised way to simulate a wide range of scenarios whilst facilitating complex interactions. Resulting data can then be saved, summarised and visualised with minimal code.
 
-More information on "Simulation of Urban MObility" (SUMO) can be found in the SUMO documentation: [sumo.dlr.de/docs/](https://sumo.dlr.de/docs/)
+More information on "Simulation of Urban MObility" (SUMO) can be found in the SUMO documentation, here: [sumo.dlr.de/docs/](https://sumo.dlr.de/docs/)
 
 The main features of TUD-SUMO include:
 
@@ -19,6 +27,13 @@ The main features of TUD-SUMO include:
   - And <i>more in the future!</i>
 
 ![logos](img/logos.png)
+
+## Links
+
+1. Simulation of Urban MObility (SUMO) documentation: [sumo.dlr.de/docs/](https://sumo.dlr.de/docs/)
+2. TUD-SUMO source code: [github.com/tud-sumo/tud_sumo](https://github.com/tud-sumo/tud_sumo/)
+3. TUD-SUMO PyPI distribution: [pypi.org/project/tud-sumo/](https://pypi.org/project/tud-sumo/)
+4. TUD-SUMO example: [github.com/tud-sumo/example](https://github.com/tud-sumo/example)
 
 ## Latest Version
 
@@ -59,4 +74,4 @@ TUD-SUMO is developed by Callum Evans in the DIAMoND lab of TU Delft. For any qu
 
 ## Citations
 
-  1. "Microscopic Traffic Simulation using SUMO"; Pablo Alvarez Lopez, Michael Behrisch, Laura Bieker-Walz, Jakob Erdmann, Yun-Pang Flötteröd, Robert Hilbrich, Leonhard Lücken, Johannes Rummel, Peter Wagner, and Evamarie Wießner. IEEE Intelligent Transportation Systems Conference (ITSC), 2018.
+  1. "<i>Microscopic Traffic Simulation using SUMO</i>"; Pablo Alvarez Lopez, Michael Behrisch, Laura Bieker-Walz, Jakob Erdmann, Yun-Pang Flötteröd, Robert Hilbrich, Leonhard Lücken, Johannes Rummel, Peter Wagner, and Evamarie Wießner. <i>IEEE Intelligent Transportation Systems Conference (ITSC)</i>, 2018.

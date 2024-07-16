@@ -11,6 +11,7 @@ Python 3.10 or later is required to run TUD-SUMO, otherwise, the required depend
   - `matplotlib`
   - `mpl-tools`
   - `shapely`
+  - `requests`
   - `tqdm`
 
 ## Creating an Environment
@@ -21,11 +22,25 @@ It is recommended to use install the required packages in an environment, such a
 conda create --name tud-sumo
 conda activate tud-sumo
 conda install matplotlib tqdm
-pip install traci sumolib mpl-tools shapely
+pip install traci sumolib mpl-tools shapely requests
 ```
 
 Conda can then be deactivated later using the command:
 
 ```
 conda deactivate tud-sumo
+```
+
+## Installation
+
+TUD-SUMO is available on PyPI, and can be installed using the following command below. More information and previous release versions can be found on [PyPI](https://pypi.org/project/tud-sumo/).
+
+```
+pip install tud-sumo
+```
+
+To install a specific version of TUD-SUMO, use:
+
+```
+pip install tud-sumo==3.0.4
 ```

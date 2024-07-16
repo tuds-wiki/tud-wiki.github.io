@@ -1,6 +1,6 @@
 # Example
 
-Below is a complex example simulation that combines multiple types of control and object tracking.
+An complex example of TUD-SUMO with multiple controllers and object tracking can be found here, at [github.com/tud-sumo/example](https://github.com/tud-sumo/example), however, this example is broken down below.
 
 1. Initialise the simulation object.
 ```python
