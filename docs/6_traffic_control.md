@@ -117,7 +117,7 @@ Both '<i>type</i>' and '<i>geometry_ids</i>' are the only required parameters. '
 A VSL controller can also be created by directly initialising the object with the same parameters dictionary, however, it must be added to the simulation to operate.
 
 ```python
-from controllers import VSLController
+from tud_sumo.controllers import VSLController
 
 vsl_controller = VSLController(vsl_id="vsl_controller", vsl_params=vsl_parameters, simulation=my_sim)
 my_sim.add_controllers({"vsl_controller": vsl_controller})
@@ -180,7 +180,7 @@ The only required parameters are '<i>type</i>' and '<i>detector_ids</i>'. '<i>ty
 A RG controller can also be created by directly initialising the object with the same parameters dictionary, however, it must be added to the simulation to operate.
 
 ```python
-from controllers import RGController
+from tud_sumo.controllers import RGController
 
 rg_controller = RGController(vsl_id="rg_controller", rg_params=rg_parameters, simulation=my_sim)
 my_sim.add_controllers({"rg_controller": rg_controller})

@@ -9,7 +9,7 @@ Before anything can be simulated, all the necessary SUMO scenario files are requ
 All simulations in TUD-SUMO are created and run using the `Simulation` class, which is initialised as below. A scenario name and description are optional, but can be useful when running multiple similar simulations.
 
 ```python
-from simulation import *
+from tud_sumo.simulation import Simulation
 
 my_sim = Simulation(scenario_name="example", scenario_desc="Example simulation.")
 ```

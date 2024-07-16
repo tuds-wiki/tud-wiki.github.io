@@ -13,7 +13,7 @@ The `Plotter` object is initialised with a corresponding active `Simulation` obj
   - `overwrite_figs`: Denotes whether to overwrite old figures when saving.
 
 ```python
-from plot import Plotter
+from tud_sumo.plot import Plotter
 
 # Simple initialisation
 plt = Plotter(my_sim)
