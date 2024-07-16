@@ -8,7 +8,7 @@ nav:
   - Traffic Control: 6_traffic_control.md
   - Events: 7_events.md
   - Plotting Functions: 8_plotting.md
-  - Examples: 9_examples.md
+  - Example: 9_examples.md
 theme:
   name: material
   font:
