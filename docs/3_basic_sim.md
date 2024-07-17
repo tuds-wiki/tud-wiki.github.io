@@ -172,6 +172,9 @@ All data saved by a simulation or a simulation data file can be summarised using
 
 ```python
 my_sim.print_summary(save_file="data/example_summary.txt")
+
+# Print summary without creating a Simulation object
+from tud_sumo.simulation import print_summary
 print_summary("data/example_data.pkl")
 ```
 
@@ -254,6 +257,9 @@ The structure of a simulation data file can also be printed using the `Simulatio
 
 ```python
 my_sim.print_sim_data_struct()
+
+# Print structure without creating a Simulation object
+from tud_sumo.simulation import print_sim_data_struct
 print_sim_data_struct("data/example_data.pkl")
 ```
 
