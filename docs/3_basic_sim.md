@@ -45,7 +45,9 @@ There are two approaches to adding demand to a simulation. The default approach 
 
     When adding demand using `Simulation.load_demand()` or `Simulation.add_demand()`, custom vehicle types and routes will still need to be pre-defined in a '<i>.rou.xml</i>' file. Any trips defined in this file will also still occur.
 
-`Simulation.load_demand()` can be used to load a pre-defined demand profile from a '<i>.csv</i>' file, in the format below. For a route, either an '<i>origin</i>' and '<i>destination</i>' or a '<i>route_id</i>' is required. If using a route ID, the route must be pre-defined in the '<i>.rou.xml</i>' file. A time range for the demand is also required, either with a '<i>start_time/end_time</i>' or '<i>start_step/end_step</i>'. The demand value can either be given as a flow value in vehicles/hour under '<i>demand</i>' or as a raw number of vehicles under '<i>number</i>'. If a flow value is given, vehicles are spawned throughout the demand period at this specified rate. Vehicles are inserted using a Gaussian distribution.
+`Simulation.load_demand()` can be used to load a pre-defined demand profile from a '<i>.csv</i>' file, in the format below. For a route, either an '<i>origin</i>' and '<i>destination</i>' or a '<i>route_id</i>' is required. If using a route ID, the route must be pre-defined in the '<i>.rou.xml</i>' file. A time range for the demand is also required, either with a '<i>start_time/end_time</i>' or '<i>start_step/end_step</i>'. The demand value can either be given as a flow value in vehicles/hour under '<i>demand</i>' or as a raw number of vehicles under '<i>number</i>'.
+
+If a flow value is given, vehicles are spawned throughout the demand period at this specified rate. Vehicles are inserted into the simulation using a Gaussian distribution with an average of '<i>demand</i>' vehicle per hour. '<i>insertion_sd</i>' is an optional float parameter that can be used to change the standard deviation of this distribution, and defaults to 1/3. Note that the actual standard deviation used is calculated using <i>demand * insertion_sd</i>. When the vehicles per step is below 1, vehicles are inserted at each step with this rate as a probability.
 
 The other parameters are optional. '<i>vehicle_types</i>' can be a list of vehicle type IDs or a single ID and can optionally be given with '<i>vehicle_type_dists</i>'. When adding demand of multiple potential vehicle types, this allows for the distribution of types to be defined. If '<i>vehicle_types</i>', the default vehicle type is used, and when '<i>vehicle_types</i>' is given without a '<i>vehicle_type_dists</i>', vehicle types have an equal distribution. '<i>initial_speed</i>' defines the initial speed of vehicles at insertion and can either be '<i>max</i>', '<i>random</i>' or a number > 0, but defaults to '<i>max</i>'. '<i>origin_lane</i>' defines which lane vehicles are inserted at. This can either be '<i>random</i>', '<i>free</i>', '<i>allowed</i>', '<i>best</i>', '<i>first</i>' or a specific lane index, but defaults to '<i>best</i>'.
 
@@ -56,10 +58,10 @@ Two examples of the contents of a '<i>demand.csv</i>' file are shown below. It i
 | edge_1 |   edge_10   |      0     |    600   |  1200  | "cars,vans,lorries" |    "0.7,0.2,0.1"   |
 |   ...  |     ...     |     ...    |    ...   |   ...  |         ...         |         ...        |
 
-| route_id | start_step | end_step | number | initial_speed | origin_lane |
-|:--------:|:----------:|:--------:|:------:|:-------------:|:-----------:|
-|  route_1 |      0     |   1200   |   200  |      max      |      1      |
-|    ...   |     ...    |    ...   |   ...  |      ...      |     ...     |
+| route_id | start_step | end_step | number | initial_speed | origin_lane | insertion_sd |
+|:--------:|:----------:|:--------:|:------:|:-------------:|:-----------:|:------------:|
+|  route_1 |      0     |   1200   |   200  |      max      |      1      |      0.3     |
+|    ...   |     ...    |    ...   |   ...  |      ...      |     ...     |      ...     |
 
 Otherwise, demand can be added in code using the `Simulation.add_demand()` function. This uses the same set of parameters as the demand files above, except '<i>origin/destination/route_id</i>' is replaced by a single `routing` parameter, and `step_range` is used instead of '<i>start_time/end_time</i>' or '<i>start_step/end_step</i>'. Demand is also defined as a flow rate in vehicles/hour. Examples are shown below.
 

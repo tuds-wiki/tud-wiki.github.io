@@ -2,7 +2,9 @@
 
 ## Requirements
 
-To run TUD-SUMO, first install SUMO. Platform-specific information on how to do this can be found in the SUMO documentation: [https://sumo.dlr.de/docs/Installing/](https://sumo.dlr.de/docs/Installing/)
+To run TUD-SUMO, first install SUMO. Platform-specific information on how to do this can be found in the SUMO documentation: [sumo.dlr.de/docs/Installing/](https://sumo.dlr.de/docs/Installing/)
+
+Once SUMO has been installed, ensure that the `SUMO_HOME` variable has been set in your environment. This should be set to the base directory of your SUMO installation. Information on how to do this can be found here: [sumo.dlr.de/docs/Basics/Basic_Computer_Skills.html](https://sumo.dlr.de/docs/Basics/Basic_Computer_Skills.html#configuring_path_settings)
 
 Python 3.10 or later is required to run TUD-SUMO, otherwise, the required dependencies are:
 
