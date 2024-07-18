@@ -3,7 +3,7 @@
   <img src="img/header.png" />
   <br><br>
   <a href="https://github.com/tud-sumo/tud_sumo" alt="GitHub">
-        <img src="https://img.shields.io/badge/v3.0.4-%2338A6D6?logo=github&link=https%3A%2F%2Fgithub.com%2Ftud-sumo%2Ftud_sumo
+        <img src="https://img.shields.io/badge/v3.0.6-%2338A6D6?logo=github&link=https%3A%2F%2Fgithub.com%2Ftud-sumo%2Ftud_sumo
         " /></a>
   <a href="https://pypi.org/project/tud-sumo/" alt="PyPI">
         <img src="https://img.shields.io/badge/PyPI-%2338A6D6?logo=pypi&logoColor=white&link=https%3A%2F%2Fgithub.com%2Ftud-sumo%2Ftud_sumo
