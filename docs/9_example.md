@@ -78,7 +78,6 @@ my_sim.add_events("example_scenario/example_incident.json")
 9. Run a control loop, checking current step with `my_sim.curr_step`.
 ```python
 n, sim_dur, new_veh_idx = 1 / my_sim.step_length, 500 / my_sim.step_length, 0
-pbar = tqdm(desc="Running sim (step 0, 0 vehs)", total=sim_dur)
 while my_sim.curr_step < sim_dur:
 ```
 
@@ -91,7 +90,7 @@ while my_sim.curr_step < sim_dur:
 
 11. Step through simulation.
 ```python
-    my_sim.step_through(n_steps=n, pbar=pbar)
+    my_sim.step_through(n_steps=n, pbar_max_steps=sim_dur)
 ```
 
 12. Dynamically add new vehicles driving from '<i>urban_in_e</i>' to '<i>urban_out_w</i>'.

@@ -7,8 +7,8 @@ nav:
   - Tracked Objects: 5_tracked_objs.md
   - Traffic Control: 6_traffic_control.md
   - Events: 7_events.md
-  - Plotting Functions: 8_plotting.md
-  - Example: 9_examples.md
+  - Plotting Data: 8_plotting.md
+  - Example: 9_example.md
 theme:
   name: material
   font:

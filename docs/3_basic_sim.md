@@ -83,27 +83,37 @@ my_sim.add_demand(routing="route_1",
 
 !!! warning
 
-    Adding demand dynamically (`Simulation.load_demand()` and `Simulation.add_demand()`) reduces performance compared to pre-defined demand. Average trip times will also be longer as vehicles added this way are registered when they are loaded, not when they are inserted.
+    Adding demand dynamically (`Simulation.load_demand()` and `Simulation.add_demand()`) reduces performance compared to pre-defined demand in a '<i>.rou.xml</i>' file. Average trip times will also be longer as vehicles added this way are registered when they are loaded, not when they are inserted.
 
 ## Running the Simulation
 
-The simulation is run using the `Simulation.step_through()` function. When no parameters are given, the simulation will run through one step by default.
+The simulation is run using the `Simulation.step_through()` function. When no parameters are given, the simulation will run through one step by default. Otherwise, using `n_steps` will run the simulation for a specific number of steps, `end_step` will run the simulation until a specific step and `n_seconds` will run the simulation for a specific amount of time (in seconds).
 
 ```python
-my_sim.step_through(n_steps=100)
+# Run 1 step
+my_sim.step_through()
+
+# Run for 100 steps
+my_sim.step_through(100)
+
+# Run until step 200
+my_sim.step_through(end_step=200)
+
+# Run for 100 seconds (where step length = 0.5)
+my_sim.step_through(n_seconds=200)
 ```
 
-A control loop can, therefore, be created as below. tqdm and the `pbar` parameter can be used to create a consistent progress bar that can be used throughout multiple calls of `Simulation.step_through()`.
+A control loop can, therefore, be created as below. A progress bar is automatically created when simulating for 10 or more steps in one call of `Simulation.step_through()`. In order to create a progress bar that is consistent between separate calls, use the `pbar_max_steps` parameter and set this to the total length of the simulation.
 
 ```python
 n, sim_dur = 100, 2500
-pbar = tqdm(desc="Running simulation (step 0, 0 vehs)", total=sim_dur)
 while my_sim.curr_step < sim_dur:
 
     # Step through n steps.
-    my_sim.step_through(n_steps=n, pbar=pbar)
+    my_sim.step_through(n_steps=n, pbar_max_steps=sim_dur)
 
-    # perform control ...
+    # Perform control
+    # ...
 ```
 
 ## Ending the Simulation

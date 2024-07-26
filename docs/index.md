@@ -3,7 +3,7 @@
   <img src="img/header.png" />
   <br><br>
   <a href="https://github.com/tud-sumo/tud_sumo" alt="GitHub">
-        <img src="https://img.shields.io/badge/v3.0.6-%2338A6D6?logo=github&link=https%3A%2F%2Fgithub.com%2Ftud-sumo%2Ftud_sumo
+        <img src="https://img.shields.io/badge/v3.0.7-%2338A6D6?logo=github&link=https%3A%2F%2Fgithub.com%2Ftud-sumo%2Ftud_sumo
         " /></a>
   <a href="https://pypi.org/project/tud-sumo/" alt="PyPI">
         <img src="https://img.shields.io/badge/PyPI-%2338A6D6?logo=pypi&logoColor=white&link=https%3A%2F%2Fgithub.com%2Ftud-sumo%2Ftud_sumo
@@ -37,16 +37,30 @@ The main features of TUD-SUMO include:
 
 ## Latest Version
 
-The Latest version of TUD-SUMO is v3.0.6, and was released on 18/07/2024. The changenotes for this version are:
+The Latest version of TUD-SUMO is v3.0.7, and was released on 26/07/2024. The changenotes for this version are:
 
-### Bug Fixes & Fundamental Diagrams
+### Speed, Flow & Density Update and Console Improvements
 
-  - Finished `Plotter.plot_fundamental_diagram()` & added percentiles for plotting.
-  - Added check for `SUMO_HOME` environment variable.
-  - Added `'insertion_sd'` (insertion standard deviation) to demand input.
-  - Fixed seed only accepting integers as input.
-  - Fixed errors in simulations without detectors.
-  - Fixed array length error in `Simulation.step_through().`
+#### Changes & Improvements
+
+  - Added speed, flow and density data to tracked edges.
+  - Added `lane_idx` parameter `Plotter.plot_trajectories()` to allow for plotting trajectories by lane.
+  - Added `suppress_traci_warnings` parameter to hide emergency braking, collision warnings etc.
+  - Added `SimulationError` for simulation-specific errors.
+  - Improved progress bar (changed to automatically show, added `pbar_max_steps` parameter to allow for persistent progress bars through multiple `Simulation.step_through()` calls).
+  - Removed `ignore_TraCI_err` parameter.
+  - Changed `Plotter.plot_od_demand()` to plot network-wide demand by default.
+  - Added `Simulation.get_demand_table()` function to fetch demand inputs.
+
+#### Bug Fixes
+
+  - Fixed error in `Simulation.cause_incident()` where no `EventScheduler` object was created.
+  - Fixed incorrect `scenario_name` error.
+  - Fixed `suppress_warnings` for TUD-SUMO warnings.
+  - Fixed no `'vehicle_type_dists'` parameter error when adding demand.
+  - Fixed `Simulation.get_geometry_ids()` returning empty arrays.
+  - Fixed `sim_dur` parameter in `Simulation.step_through()`.
+  - Removed invalid '<i>route_edges</i>' subscription.
 
 ## Contact
 

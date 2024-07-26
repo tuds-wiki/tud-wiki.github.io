@@ -68,7 +68,7 @@ my_sim.tracked_junctions["traffic_signal_1"].reset()
 
 ## Tracked Edges
 
-Tracked edges are very simple to initialise, but include a lot of useful data collection. Edges are only tracked using their ID with the `Simulation.add_tracked_edges()` function.
+Tracked edges are very simple to initialise, but include a lot of useful data collection. Edges are tracked using only their ID with the `Simulation.add_tracked_edges()` function.
 
 ```python
 # Add all edges as a tracked edge
@@ -78,7 +78,7 @@ my_sim.add_tracked_edges()
 my_sim.add_tracked_edges(["edge_1", "edge_2", "edge_3", "edge_4", "edge_5"])
 ```
 
-All data from tracked edges is stored in the `sim_data` dictionary under '<i>data/edges/{edge_id}</i>'. The main data collected is under '<i>data/edges/{edge_id}/step_vehicles</i>'. This includes the vehicle ID, position, speed and lane index for all vehicles on the edge at each step. This data can be used to calculate vehicle counts and average speeds, as well as plot trajectories and space-time diagrams. Otherwise, '<i>linestring</i>', '<i>length</i>', '<i>to_node</i>', '<i>from_node</i>', '<i>n_lanes</i>', '<i>init_time</i>' and '<i>curr_time</i>' are also stored for each edge.
+All data from tracked edges is stored in the `sim_data` dictionary under '<i>data/edges/{edge_id}</i>'. The main data collected is under '<i>data/edges/{edge_id}/step_vehicles</i>'. This includes the vehicle ID, position, speed and lane index for all vehicles on the edge at each step. This precise data is used to plot trajectories and space-time diagrams.
 
 The step vehicle data is stored in a (4x1) array as follows:
 
@@ -87,7 +87,17 @@ The step vehicle data is stored in a (4x1) array as follows:
   3. Vehicle speed in `Simulation` class units
   4. Lane index [0 - no. lanes]
 
-Data collection for tracked edges can be reset using the function below, however, data collection is also reset when using `Simulation.reset_data()`.
+Tracked edges collect average speed, flow and density at each time step and store these values in a list. Funamental diagrams can be plotted with `TrackedEdge` data using the `Plotter.plot_fundamental_diagram()` function, but it is possible to return the individual values. This data is stored in the `sim_data` dictionary under '<i>data/edges/{edge_id}/speeds</i>', '<i>data/edges/{edge_id}/flows</i>' and '<i>data/edges/{edge_id}/densities</i>', but can be fetched from the `TrackedEdge` object as below. A value of -1 denotes that there were no vehicles on the edge during the step.
+
+```python
+speeds    = my_sim.tracked_edges["edge_1"].speeds
+flows     = my_sim.tracked_edges["edge_1"].flows
+densities = my_sim.tracked_edges["edge_1"].densities
+```
+
+'<i>linestring</i>', '<i>length</i>', '<i>to_node</i>', '<i>from_node</i>', '<i>n_lanes</i>', '<i>init_time</i>' and '<i>curr_time</i>' are also stored for each edge.
+
+Data collection for specific tracked edges can be reset using the function below, however, data collection is also reset when using `Simulation.reset_data()`.
 
 ```python
 my_sim.tracked_edges["edge_1"].reset()

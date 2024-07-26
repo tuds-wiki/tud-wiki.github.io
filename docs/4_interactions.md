@@ -205,7 +205,6 @@ The valid data keys for each object type and respective function are listed belo
     - '<i>lane_idx</i>'
     - '<i>route_id</i>'
     - '<i>route_idx</i>'
-    - '<i>route_edges</i>'
 
   - `add_detector_subscriptions()`/`remove_detector_subscriptions()`:
     - '<i>vehicle_count</i>'

@@ -1,4 +1,4 @@
-# Plotting
+# Plotting Data
 
 TUD-SUMO aims to provide plotting functions with each feature. These are specifically tailored to the data collected in the `sim_data` and have a unified and standardised form. It has also been designed to facilitate plotting a large number of graphs, and graphs for different scenarios. All graphs for a specific simulation can, therefore, be saved with the same label and in specific locations.
 
@@ -27,7 +27,33 @@ plt = Plotter(simulation="example_data.json",
              )
 ```
 
-All graphs can be saved or shown onscreen with the `save_fig` parameter. If a valid filename is given, the resulting plot is saved, otherwise, it is shown onscreen. All plotting functions will also include `time_range` or `show_events` parameters where relevant. By default, the graphs will include data throughout the whole simulation, but this can be changed by setting a `time_range` <b>in plotter time units defined during initialisation</b>, ie. hours or minutes. By default, graphs will also show when events occured, although this can be disabled by setting `show_events = False`.
+## Plotting Graphs
+
+### Display & Saving Graphs
+
+All graphs can be saved or shown onscreen with the `save_fig` parameter. If a valid filename is given, the resulting plot is saved, otherwise, it is shown onscreen. An example is shown below.
+
+```python
+# Display trajectories graph
+plt.plot_trajectories(["edge_1", "edge_2", "edge_3"])
+
+# Save trajectories graph to 'figs/trajectories.png'
+plt.plot_trajectories(["edge_1", "edge_2", "edge_3"], save_fig="figs/trajectories.png")
+```
+
+### Common Parameters
+
+Whenever possible, all plotting functions include `time_range` and `show_events` parameters. By default, graphs are plotted for the data throughout the whole simulation. `time_range` can be used to plot a specific duration within the simulation, and is defined in <b>in plotter time units</b>, ie. hours or minutes. If `show_events` is set to true, graphs will display times with active events with a shaded region. Examples of these are shown below.
+
+![Time range/events example](img/plots/range_event_ex.png)
+
+### Colours
+
+Certain functions use a `line_colour` parameter that can be used to set the line colour when plotting graphs. All matplotlib colours are valid parameters. By default, TUD-SUMO uses the [TU Delft colour palette](https://www.tudelft.nl/huisstijl/bouwstenen/kleur) as below, and so these colours are also valid parameters.
+
+![TU Delft colour palette](img/palette.png)
+
+## Plotting Functions
 
 !!! Warning
 
@@ -45,7 +71,7 @@ All (current) plotting functions are listed in the table below. Several graph ex
 | `plot_od_trip_times()`         | Average trip times for OD pairs.                                                                                   |
 | `plot_cumulative_curve()`      | Cumulative curve, either for network-wide data or for specific inflow and outflow detectors.                       |
 | `plot_space_time_diagram()`    | Space-time diagram based on `step_vehicles` data in tracked edges.                                                 |
-| `plot_trajectories()`          | Trajectories based on `step_vehicles` data in tracked edges.                                                       |
+| `plot_trajectories()`          | Trajectories based on `step_vehicles` data in tracked edges. Use `lane_idx` to plot lane-specific data.            |
 | `plot_fundamental_diagram()`   | Fundamental diagram based on `step_vehicles` data in tracked edges.                                                |
 | `plot_rm_rate()`               | Metering rate for a ramp metering controller.                                                                      |
 | `plot_rm_queuing()`            | On-ramp queue length/spillback for a ramp meter, if tracked.                                                       |
@@ -64,7 +90,7 @@ All (current) plotting functions are listed in the table below. Several graph ex
 
 4. `plt.plot_cumulative_curve(show_events=False, save_fig="cumulative_curve.png")` ![Cumulative curve](img/plots/cumulative_curve.png)
 
-5. `plt.plot_trajectories(edge_ids=["126730026", "1191885773", "1191885771", "126730171", "1191885772", "948542172", "70944365", "308977078", "1192621075"], save_fig="trajectories.png")` ![Trajectories](img/plots/trajectories.png)
+5. `plt.plot_trajectories(["126730026", "1191885773", "1191885771", "126730171", "1191885772", "948542172", "70944365", "308977078", "1192621075"], lane_idx=0, save_fig="trajectories.png", show_events=False)` ![Trajectories](img/plots/trajectories.png)
 
 6. `plt.plot_rm_rate(rm_id="crooswijk_meter", show_events=False, save_fig="rm_rate.png")` ![Metering rate](img/plots/rm_rate.png)
 
