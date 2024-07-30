@@ -66,7 +66,7 @@ All data collected throughout the simulation is stored in the `sim_data` diction
     - `geometry_ids` and `vehicle_types` can either be a single value (string) or list of values (list/tuple). If multiple geometry IDs are given, IDs for all geometries can either be returned in a single list (`flatten = True`), or the IDs can be returned in a dictionary with lists of IDs separated by geometry (`flatten = False`).
   - `get_interval_detector_data(detector_id, n_steps, data_keys, avg_vals)`:
     - Returns data collected by a detector between during the time range (`curr_step - n_steps`, `curr_step`).
-    - `data_keys` can either be a single value (string) or a list of values (list/tuple). The valid keys are '<i>vehicle_counts</i>', '<i>speeds</i>' and '<i>occupancy</i>', although '<i>occupancy</i>' is only valid for induction loop detectors.
+    - `data_keys` can either be a single value (string) or a list of values (list/tuple). The valid keys are '<i>vehicle_counts</i>', '<i>speeds</i>' and '<i>occupancies</i>', although '<i>occupancies</i>' is only valid for induction loop detectors.
     - If `avg_vals == True`, then values are returned averaged, otherwise, raw values are returned.
 
 ### Advanced Getters

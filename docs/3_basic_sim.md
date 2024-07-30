@@ -267,6 +267,8 @@ print_summary("data/example_data.pkl")
 
 The structure of a simulation data file can also be printed using the `Simulation.print_sim_data_struct()` or `print_sim_data_struct()` functions. This will print the structure of the `sim_data` dictionary as a tree, allowing you to see the exact keys and data types used in the data. An example of the output of `print_sim_data_struct()` is shown below.
 
+Note that the dimensions of array are only displayed up to 2D. If an array has a higher dimension, this is denoted by a '<i>+</i>'. If the array is inhomogeneous (ie. its dimensions are inconsistent), this is denoted by a '<i>*</i>' and the array's maximum size is shown.
+
 ```python
 my_sim.print_sim_data_struct()
 
