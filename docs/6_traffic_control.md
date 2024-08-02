@@ -205,6 +205,9 @@ True
 ```
 
 RG controllers will automatically register and save changes, and the times at which they occur. This data is stored in the `sim_data` dictionary under '<i>data/controllers/{rg_id}/activation_times</i>'.
+
 This stores a series of tuples where the first value is the new destination that vehicles are redirected towards, the second value is the diversion percent and the third is the time this change was made. A destination and diversion percent value of -1 denote the controller is being deactivated. Otherwise, the number of vehicles redirected throughout the simulation is also collected under '<i>data/controllers/{rg_id}/n_diverted</i>'.
+
+New route objects can be created using [`Simulation.add_route()`](4_interactions.md#addingremoving-vehicles). Vehicles can then be redirected using the ID for the new route.
 
 VSL controller data can be reset using `VSLController.reset()`, or the controller itself can be removed using `Simulation.remove_controllers()`.

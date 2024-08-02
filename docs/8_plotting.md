@@ -49,7 +49,7 @@ Whenever possible, all plotting functions include `time_range` and `show_events`
 
 ### Colours
 
-Certain functions use a `line_colour` parameter that can be used to set the line colour when plotting graphs. All matplotlib colours are valid parameters. By default, TUD-SUMO uses the [TU Delft colour palette](https://www.tudelft.nl/huisstijl/bouwstenen/kleur) as below, and so these colours are also valid parameters.
+Certain functions use a `plt_colour` parameter that can be used to set the line colour when plotting graphs. All matplotlib colours are valid parameters. By default, TUD-SUMO uses the [TU Delft colour palette](https://www.tudelft.nl/huisstijl/bouwstenen/kleur) as below, and so these colours are also valid parameters.
 
 ![TU Delft colour palette](img/palette.png)
 
@@ -69,6 +69,8 @@ All (current) plotting functions are listed in the table below. Several graph ex
 | `plot_tl_colours()`            | Traffic light signal settings over time.                                                                           |
 | `plot_od_demand()`             | Flow rate, either for a route or an OD pair. Note, this only includes data added in TUD-SUMO.                      |
 | `plot_od_trip_times()`         | Average trip times for OD pairs.                                                                                   |
+| `plot_trip_time_histogram()`   | Trip time distribution as a histogram.                                                                             |
+| `plot_throughput()`            | Rate of completed trips in vehicles per hour.                                                                      |
 | `plot_cumulative_curve()`      | Cumulative curve, either for network-wide data or for specific inflow and outflow detectors.                       |
 | `plot_space_time_diagram()`    | Space-time diagram based on `step_vehicles` data in tracked edges.                                                 |
 | `plot_trajectories()`          | Trajectories based on `step_vehicles` data in tracked edges. Use `lane_idx` to plot lane-specific data.            |

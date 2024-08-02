@@ -41,7 +41,7 @@ The most basic getter functions in the `Simulation` class return the IDs of obje
 | `get_junction_ids()`                   | All junction IDs.                                                                                           |
 | `get_tracked_junction_ids()`           | All tracked junction IDs.                                                                                   |
 
-### Object Data
+### Other Data
 
 All data collected throughout the simulation is stored in the `sim_data` dictionary, however, its data (and other dynamic vehicle data) can be fetched using the `Simulation.get_[x]()` functions below.
 
@@ -68,6 +68,17 @@ All data collected throughout the simulation is stored in the `sim_data` diction
     - Returns data collected by a detector between during the time range (`curr_step - n_steps`, `curr_step`).
     - `data_keys` can either be a single value (string) or a list of values (list/tuple). The valid keys are '<i>vehicle_counts</i>', '<i>speeds</i>' and '<i>occupancies</i>', although '<i>occupancies</i>' is only valid for induction loop detectors.
     - If `avg_vals == True`, then values are returned averaged, otherwise, raw values are returned.
+
+To query routes and paths in the network, use the functions below.
+
+  - `is_valid_path(edge_ids)`:
+    - Tests whether a list of edges is a valid path. This is determined by checking whether each edge connects to the subsequent edge in the list.
+    - Valid paths can be added as a route using the `Simulation.add_route()` function.
+  - `get_path_travel_time(edge_ids, curr_tt, unit)`:
+    - Calculate the travel time of a path (list of edges). If `curr_tt` is true, the travel time is calculated using current mean speed on edges. If `curr_tt` is false, the travel time is calculated using free-flow speed.
+  - `get_path_edges(origin, destination, curr_optimal)`:
+    - Uses the A* algorithm to find the optimal route between two edges (`origin` to `destination`).
+    - If `curr_optimal` is true, the route is based on current conditions, using current mean speed on edges to find travel time. If `curr_optimal` is false, the route is calculated based on free-flow travel time.
 
 ### Advanced Getters
 
@@ -226,10 +237,56 @@ The valid data keys for each object type and respective function are listed belo
 Vehicles can be added to or removed from the simulation using the `Simulation.add_vehicle()` and `Simulation.remove_vehicles()` functions respectively. These functions and their parameters are detailed below.
 
   - `add_vehicle()`:
-    - `vehicle_id`: ID for the new vehicle (must be unique)
-    - `vehicle_type`: Vehicle type
-    - `routing`: Denotes how the vehicle will route through the network (either route ID or (2x1) list of edge IDs for an OD pair)
-    - `initial_speed`: Initial speed of the vehicle at insertion, defaults to maximum (either '<i>max</i>', '<i>random</i>' or a number > 0)
-    - `origin_lane`: Lane for insertion at origin, defaults to best (either '<i>random</i>', '<i>free</i>', '<i>allowed</i>', '<i>best</i>', '<i>first</i>' or lane index)
+    - `vehicle_id`: (Unique) ID for the new vehicle.
+    - `vehicle_type`: Vehicle type.
+    - `routing`: Denotes how the vehicle will route through the network (either route ID or (2x1) list of edge IDs for an OD pair).
+    - `initial_speed`: Initial speed of the vehicle at insertion, defaults to maximum (either '<i>max</i>', '<i>random</i>' or a number > 0).
+    - `origin_lane`: Lane for insertion at origin, defaults to best (either '<i>random</i>', '<i>free</i>', '<i>allowed</i>', '<i>best</i>', '<i>first</i>' or lane index).
   - `remove_vehicles()`:
-    - `vehicle_ids`: A single vehicle ID (string) or list of IDs (list/tuple)
+    - `vehicle_ids`: A single vehicle ID (string) or list of IDs (list/tuple).
+
+When repeatedly adding new vehicles, it may be useful to create a new route that vehicles can be assigned to. This can be done using `Simulation.add_route()`, which is detailed below.
+
+  - `add_route()`:
+    - `routing`: List of edge IDs. If 2 disconnected edges are given, vehicles calculate an optimal path at insertion.
+    - `route_id`: (Unique) route ID. If this is not given, the ID is generated using the origin and destination edge IDs.
+    - `assert_new_id`: If true, an error is thrown for duplicate route IDs.
+
+## Custom Vehicle Functions
+
+`Simulation.add_vehicle_in_funcs()` and `Simulation.add_vehicle_out_funcs()` can be used to easily add custom functions that are called with each vehicle that enters or leaves the simulation. An example of this is shown below. Multiple functions can be added and are called in the order in which they are added.
+
+```python
+def new_vehicle_1(vehicle_id, origin):
+    print(vehicle_id, "entered simulation from edge", origin)
+
+def new_vehicle_2(curr_step):
+    print("new vehicle at step", curr_step, "\n")
+
+def exiting_vehicle(vehicle_id, curr_step):
+    print(vehicle_id, "left simulation at step", curr_step)
+
+my_sim.add_vehicle_in_funcs([new_vehicle_1, new_vehicle_2])
+my_sim.add_vehicle_out_funcs(exiting_vehicle)
+
+while my_sim.is_running():
+    my_sim.step_through()
+```
+
+Running this example would therefore produce:
+
+```
+>>> run_sim.py
+car_1 entered simulation from edge west_1
+new vehicle at step 0
+
+car_2 entered simulation from edge west_1
+new vehicle at step 0
+
+car_1 left simulation at step 10
+car_2 left simulation at step 10
+```
+
+Only specific parameters (`curr_step`, `vehicle_id`, `route_id`, `vehicle_type`, `departure`, `origin`, `destination`) can be used, although `add_vehicle_out_funcs()` only takes functions that use `curr_step` and/or `vehicle_id`.
+
+These functions can be removed using `Simulation.remove_vehicle_in_funcs()` and `Simulation.remove_vehicle_out_funcs()`.
