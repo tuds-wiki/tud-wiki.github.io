@@ -1,0 +1,948 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../2_getting_started/">
+      
+      
+        <link rel="next" href="../4_interactions/">
+      
+      
+      <link rel="icon" href="../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.31">
+    
+    
+      
+        <title>Basic Simulations - TUD-SUMO Wiki</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.3cba04c6.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Open Sans";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#basic-simulations" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="TUD-SUMO Wiki" class="md-header__button md-logo" aria-label="TUD-SUMO Wiki" data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            TUD-SUMO Wiki
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Basic Simulations
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="TUD-SUMO Wiki" class="md-nav__button md-logo" aria-label="TUD-SUMO Wiki" data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    TUD-SUMO Wiki
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_getting_started/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Basic Simulations
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Basic Simulations
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#sumo-scenarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      SUMO Scenarios
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#initialising-the-simulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Initialising the Simulation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adding-demand" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adding Demand
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-the-simulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running the Simulation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ending-the-simulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ending the Simulation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#automatic-data-collection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Automatic Data Collection
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#saving-summarising-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Saving &amp; Summarising Data
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4_interactions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interacting with the Simulation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_tracked_objs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tracked Objects
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6_traffic_control/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Traffic Control
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7_events/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Events
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8_plotting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Plotting Data
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9_example/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Example
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#sumo-scenarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      SUMO Scenarios
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#initialising-the-simulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Initialising the Simulation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adding-demand" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adding Demand
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-the-simulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running the Simulation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ending-the-simulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ending the Simulation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#automatic-data-collection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Automatic Data Collection
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#saving-summarising-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Saving &amp; Summarising Data
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="basic-simulations">Basic Simulations</h1>
+<h2 id="sumo-scenarios">SUMO Scenarios</h2>
+<p>Before anything can be simulated, all the necessary SUMO scenario files are required. This will typically include a '<i>.sumocfg</i>', '<i>.neteditcfg</i>', '<i>.net.xml</i>', '<i>.rou.xml</i>' and '<i>.add.xml</i>'. The simplest way to create a scenario and these files is using netedit, about which there is more information <a href="https://sumo.dlr.de/docs/Netedit/index.html">here</a>.</p>
+<h2 id="initialising-the-simulation">Initialising the Simulation</h2>
+<p>All simulations in TUD-SUMO are created and run using the <code>Simulation</code> class, which is initialised as below. A scenario name and description are optional, but can be useful when running multiple similar simulations.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">tud_sumo.simulation</span> <span class="kn">import</span> <span class="n">Simulation</span>
+
+<span class="n">my_sim</span> <span class="o">=</span> <span class="n">Simulation</span><span class="p">(</span><span class="n">scenario_name</span><span class="o">=</span><span class="s2">&quot;example&quot;</span><span class="p">,</span> <span class="n">scenario_desc</span><span class="o">=</span><span class="s2">&quot;Example simulation.&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>To then start the simulation and create the connection to SUMO through TraCI, use <code>Simulation.start()</code>. This can very easily be done using the '<i>.sumocfg</i>' file created by netedit, which links all to all other files, however, the <code>net_file</code>, <code>route_file</code> and <code>add_file</code> parameters can also be used to give each file individually. Whether or not to use the GUI is also set here, although note this cannot be changed throughout the simulation.</p>
+<div class="highlight"><pre><span></span><code><span class="n">my_sim</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="s2">&quot;example_scenario.sumocfg&quot;</span><span class="p">,</span>
+             <span class="n">gui</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+             <span class="n">get_individual_vehicle_data</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+             <span class="n">units</span><span class="o">=</span><span class="s2">&quot;metric&quot;</span><span class="p">,</span>
+             <span class="n">seed</span><span class="o">=</span><span class="mi">1</span>
+            <span class="p">)</span>
+</code></pre></div>
+<p>The <code>get_individual_vehicle_data</code> is an important parameter denoting whether to collect and save dynamic information for all vehicles (ie. position, speed, acceleration etc.) at each step. This can be useful for small scenarios where this data may be required and computation time is less of an issue, such as single intersections, however, this should be set to false for large scenarios, such as large motorway networks.</p>
+<p>3 unit settings are supported '<i>metric</i>' (km/kmph), '<i>imperial</i>' (mi/mph) and '<i>UK</i>' (km/mph). All data collected and saved are in these units, and this setting cannot be changed later.</p>
+<p>The <code>seed</code> parameter is optional and affects both the SUMO simulation and the <code>Simulation</code> class. Random seeds in SUMO primarily affects how vehicles are added into the simulation (more information can be found <a href="https://sumo.dlr.de/docs/Simulation/Randomness.html">here</a>). The seed can be set to random either by not using the parameter or by setting it to '<i>random</i>'.</p>
+<p>Tracked junctions/edges, controllers etc. can be added at this point. These objects can be added individually, or if all parameters are saved in a dictionary or '<i>.json</i>' or '<i>.pkl</i>' file, these can be read using the <code>Simulation.load_objects()</code> function. More information on these objects can be found in their respective sections.</p>
+<div class="highlight"><pre><span></span><code><span class="n">my_sim</span><span class="o">.</span><span class="n">load_objects</span><span class="p">(</span><span class="s2">&quot;parameters.json&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="adding-demand">Adding Demand</h2>
+<p>There are two approaches to adding demand to a simulation. The default approach is to define demand with routes or by flow within a '<i>.rou.xml</i>' file, in which case, nothing else needs to be done. Alternatively, demand can be generated more dynamically within TUD-SUMO. This is done with either the <code>Simulation.load_demand()</code> or <code>Simulation.add_demand()</code> functions.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>When adding demand using <code>Simulation.load_demand()</code> or <code>Simulation.add_demand()</code>, custom vehicle types and routes will still need to be pre-defined in a '<i>.rou.xml</i>' file. Any trips defined in this file will also still occur.</p>
+</div>
+<p><code>Simulation.load_demand()</code> can be used to load a pre-defined demand profile from a '<i>.csv</i>' file, in the format below. For a route, either an '<i>origin</i>' and '<i>destination</i>' or a '<i>route_id</i>' is required. If using a route ID, the route must be pre-defined in the '<i>.rou.xml</i>' file. A time range for the demand is also required, either with a '<i>start_time/end_time</i>' or '<i>start_step/end_step</i>'. The demand value can either be given as a flow value in vehicles/hour under '<i>demand</i>' or as a raw number of vehicles under '<i>number</i>'.</p>
+<p>If a flow value is given, vehicles are spawned throughout the demand period at this specified rate. Vehicles are inserted into the simulation using a Gaussian distribution with an average of '<i>demand</i>' vehicle per hour. '<i>insertion_sd</i>' is an optional float parameter that can be used to change the standard deviation of this distribution, and defaults to 1/3. Note that the actual standard deviation used is calculated using <i>demand * insertion_sd</i>. When the vehicles per step is below 1, vehicles are inserted at each step with this rate as a probability.</p>
+<p>The other parameters are optional. '<i>vehicle_types</i>' can be a list of vehicle type IDs or a single ID and can optionally be given with '<i>vehicle_type_dists</i>'. When adding demand of multiple potential vehicle types, this allows for the distribution of types to be defined. If '<i>vehicle_types</i>', the default vehicle type is used, and when '<i>vehicle_types</i>' is given without a '<i>vehicle_type_dists</i>', vehicle types have an equal distribution. '<i>initial_speed</i>' defines the initial speed of vehicles at insertion and can either be '<i>max</i>', '<i>random</i>' or a number &gt; 0, but defaults to '<i>max</i>'. '<i>origin_lane</i>' defines which lane vehicles are inserted at. This can either be '<i>random</i>', '<i>free</i>', '<i>allowed</i>', '<i>best</i>', '<i>first</i>' or a specific lane index, but defaults to '<i>best</i>'.</p>
+<p>Two examples of the contents of a '<i>demand.csv</i>' file are shown below. It is possible to link a demand file in an object parameters dictionary under '<i>demand</i>' when calling <code>Simulation.load_objects()</code>.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">origin</th>
+<th style="text-align: center;">destination</th>
+<th style="text-align: center;">start_time</th>
+<th style="text-align: center;">end_time</th>
+<th style="text-align: center;">demand</th>
+<th style="text-align: center;">vehicle_types</th>
+<th style="text-align: center;">vehicle_type_dists</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">edge_1</td>
+<td style="text-align: center;">edge_10</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">600</td>
+<td style="text-align: center;">1200</td>
+<td style="text-align: center;">"cars,vans,lorries"</td>
+<td style="text-align: center;">"0.7,0.2,0.1"</td>
+</tr>
+<tr>
+<td style="text-align: center;">...</td>
+<td style="text-align: center;">...</td>
+<td style="text-align: center;">...</td>
+<td style="text-align: center;">...</td>
+<td style="text-align: center;">...</td>
+<td style="text-align: center;">...</td>
+<td style="text-align: center;">...</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">route_id</th>
+<th style="text-align: center;">start_step</th>
+<th style="text-align: center;">end_step</th>
+<th style="text-align: center;">number</th>
+<th style="text-align: center;">initial_speed</th>
+<th style="text-align: center;">origin_lane</th>
+<th style="text-align: center;">insertion_sd</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">route_1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1200</td>
+<td style="text-align: center;">200</td>
+<td style="text-align: center;">max</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0.3</td>
+</tr>
+<tr>
+<td style="text-align: center;">...</td>
+<td style="text-align: center;">...</td>
+<td style="text-align: center;">...</td>
+<td style="text-align: center;">...</td>
+<td style="text-align: center;">...</td>
+<td style="text-align: center;">...</td>
+<td style="text-align: center;">...</td>
+</tr>
+</tbody>
+</table>
+<p>Otherwise, demand can be added in code using the <code>Simulation.add_demand()</code> function. This uses the same set of parameters as the demand files above, except '<i>origin/destination/route_id</i>' is replaced by a single <code>routing</code> parameter, and <code>step_range</code> is used instead of '<i>start_time/end_time</i>' or '<i>start_step/end_step</i>'. Demand is also defined as a flow rate in vehicles/hour. Examples are shown below.</p>
+<div class="highlight"><pre><span></span><code><span class="n">my_sim</span><span class="o">.</span><span class="n">add_demand</span><span class="p">(</span><span class="n">routing</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;edge_1&quot;</span><span class="p">,</span> <span class="s2">&quot;edge_10&quot;</span><span class="p">),</span>
+                  <span class="n">step_range</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1200</span><span class="p">),</span>
+                  <span class="n">demand</span><span class="o">=</span><span class="mi">1200</span><span class="p">,</span>
+                  <span class="n">vehicle_types</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;cars&quot;</span><span class="p">,</span> <span class="s2">&quot;vans&quot;</span><span class="p">,</span> <span class="s2">&quot;lorries&quot;</span><span class="p">],</span>
+                  <span class="n">vehicle_type_dists</span><span class="o">=</span><span class="p">[</span><span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">]</span>
+                 <span class="p">)</span>
+
+<span class="n">my_sim</span><span class="o">.</span><span class="n">add_demand</span><span class="p">(</span><span class="n">routing</span><span class="o">=</span><span class="s2">&quot;route_1&quot;</span><span class="p">,</span>
+                  <span class="n">step_range</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1200</span><span class="p">),</span>
+                  <span class="n">demand</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
+                  <span class="n">initial_speed</span><span class="o">=</span><span class="s2">&quot;max&quot;</span><span class="p">,</span>
+                  <span class="n">origin_lane</span><span class="o">=</span><span class="mi">1</span>
+                 <span class="p">)</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Adding demand dynamically (<code>Simulation.load_demand()</code> and <code>Simulation.add_demand()</code>) reduces performance compared to pre-defined demand in a '<i>.rou.xml</i>' file. Average trip times will also be longer as vehicles added this way are registered when they are loaded, not when they are inserted.</p>
+</div>
+<h2 id="running-the-simulation">Running the Simulation</h2>
+<p>The simulation is run using the <code>Simulation.step_through()</code> function. When no parameters are given, the simulation will run through one step by default. Otherwise, using <code>n_steps</code> will run the simulation for a specific number of steps, <code>end_step</code> will run the simulation until a specific step and <code>n_seconds</code> will run the simulation for a specific amount of time (in seconds).</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Run 1 step</span>
+<span class="n">my_sim</span><span class="o">.</span><span class="n">step_through</span><span class="p">()</span>
+
+<span class="c1"># Run for 100 steps</span>
+<span class="n">my_sim</span><span class="o">.</span><span class="n">step_through</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="c1"># Run until step 200</span>
+<span class="n">my_sim</span><span class="o">.</span><span class="n">step_through</span><span class="p">(</span><span class="n">end_step</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+
+<span class="c1"># Run for 100 seconds (where step length = 0.5)</span>
+<span class="n">my_sim</span><span class="o">.</span><span class="n">step_through</span><span class="p">(</span><span class="n">n_seconds</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+</code></pre></div>
+<p>A control loop can, therefore, be created as below. A progress bar is automatically created when simulating for 10 or more steps in one call of <code>Simulation.step_through()</code>. In order to create a progress bar that is consistent between separate calls, use the <code>pbar_max_steps</code> parameter and set this to the total length of the simulation.</p>
+<div class="highlight"><pre><span></span><code><span class="n">n</span><span class="p">,</span> <span class="n">sim_dur</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">2500</span>
+<span class="k">while</span> <span class="n">my_sim</span><span class="o">.</span><span class="n">curr_step</span> <span class="o">&lt;</span> <span class="n">sim_dur</span><span class="p">:</span>
+
+    <span class="c1"># Step through n steps.</span>
+    <span class="n">my_sim</span><span class="o">.</span><span class="n">step_through</span><span class="p">(</span><span class="n">n_steps</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="n">pbar_max_steps</span><span class="o">=</span><span class="n">sim_dur</span><span class="p">)</span>
+
+    <span class="c1"># Perform control</span>
+    <span class="c1"># ...</span>
+</code></pre></div>
+<h2 id="ending-the-simulation">Ending the Simulation</h2>
+<p>A simulation can be run until it is finished as below. The <code>Simulation.is_running()</code> function returns false once the simulation is over, which is determined as happening once all defined vehicles have finished their run through the simulation. It is then best to end the simulation using <code>Simulation.end()</code>, which closes the connection to TraCI.</p>
+<div class="highlight"><pre><span></span><code><span class="k">while</span> <span class="n">my_sim</span><span class="o">.</span><span class="n">is_running</span><span class="p">():</span>
+    <span class="n">my_sim</span><span class="o">.</span><span class="n">step_through</span><span class="p">()</span>
+
+<span class="n">my_sim</span><span class="o">.</span><span class="n">end</span><span class="p">()</span>
+</code></pre></div>
+<h2 id="automatic-data-collection">Automatic Data Collection</h2>
+<p>One of the major advantages of TUD-SUMO is the automatic data collection. This involves automatically collecting all basic simulation information into a <code>sim_data</code> dictionary. An example of this can be seen in examples directory in the main TUD-SUMO repository, however, the main structure is as follows:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;data&quot;</span><span class="p">:</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;detectors&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">            </span><span class="nt">&quot;junctions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">            </span><span class="nt">&quot;edges&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">            </span><span class="nt">&quot;controllers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">            </span><span class="nt">&quot;vehicles&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">            </span><span class="nt">&quot;demand&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">            </span><span class="nt">&quot;trips&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">            </span><span class="nt">&quot;events&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">            </span><span class="nt">&quot;all_vehicles&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;start&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;end&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;step_len&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;units&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;METRIC&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;seed&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;sim_start&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;08/07/2024, 13:00:00&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;sim_end&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;08/07/2024, 13:00:10&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Detectors will automatically collect vehicle speeds and counts for each time step, as well as the IDs of each vehicle that passed over it, whilst occupancies are also collected for mutli-entry-exit detectors. These will be stored under '<i>data/detectors/{detector_id}</i>', with '<i>type</i>', '<i>position</i>', '<i>speeds</i>', '<i>vehicle_counts</i>', '<i>vehicle_ids</i>' and '<i>occupancies</i>'.</p>
+<p>Vehicle data will include the number of vehicles at each step, '<i>tts</i>' (N. vehicles * step length) and '<i>delay</i>' (calculated as the time spent by vehicles waiting in each time step).</p>
+<p>Demand is only included when dynamically adding demand, ie. not when demand is solely defined in the '<i>.rou.xml</i>' file. This dictionary will contain two objects; '<i>headers</i>' and a '<i>table</i>'. '<i>table</i>' will contain a (6 x n) sized array, with its headers listed under '<i>headers</i>'. Only demand added through <code>Simulation.load_demand()</code> and <code>Simulation.add_demand()</code> will be included here.</p>
+<p>Trip data will contain data for incomplete and completed trips. This is stored under '<i>data/trips</i>' and then either '<i>incomplete</i>' or '<i>completed</i>'. Each trip will store the '<i>route_id</i>', '<i>vehicle_type</i>', '<i>departure</i>', '<i>arrival</i>' (or removal), '<i>origin</i>' and '<i>destination</i>'.</p>
+<p>Junction, edge, controller and event data are only included when necessary. The <code>all_vehicles</code> data will contain all the individual vehicle data at each time step, so it is only included when <code>get_individual_vehicle_data</code> is set to true when starting the simulation.</p>
+<p>The <code>sim_data</code> dictionary can be reset at any point using the <code>Simulation.reset_data()</code> function.</p>
+<div class="highlight"><pre><span></span><code><span class="n">my_sim</span><span class="o">.</span><span class="n">reset_data</span><span class="p">()</span>
+</code></pre></div>
+<h2 id="saving-summarising-data">Saving &amp; Summarising Data</h2>
+<p>All the data collected throughout the simulation can be saved at any point using the <code>Simulation.save_data()</code> function. This will save the <code>sim_data</code> dictionary as a file in the specified directory. Either JSON or pickle files are supported, simply denoted by a '<i>.json</i>' or '<i>.pkl</i>' extension in the filename.</p>
+<div class="highlight"><pre><span></span><code><span class="n">my_sim</span><span class="o">.</span><span class="n">save_data</span><span class="p">(</span><span class="s2">&quot;data/example_data.json&quot;</span><span class="p">)</span>
+<span class="n">my_sim</span><span class="o">.</span><span class="n">save_data</span><span class="p">(</span><span class="s2">&quot;data/example_data.pkl&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>All data saved by a simulation or a simulation data file can be summarised using the <code>Simulation.print_summary()</code> or <code>print_summary()</code> functions. This will print a summary of the collected data (ie. number of vehicles, TTS, controllers, events etc.), as well as some information about the simulation itself (ie. scenario name/description, runtime, seed etc.). This summary can be saved to a '<i>.txt</i>' file using the <code>save_file</code> parameter. An example summary is shown below.</p>
+<div class="highlight"><pre><span></span><code><span class="n">my_sim</span><span class="o">.</span><span class="n">print_summary</span><span class="p">(</span><span class="n">save_file</span><span class="o">=</span><span class="s2">&quot;data/example_summary.txt&quot;</span><span class="p">)</span>
+
+<span class="c1"># Print summary without creating a Simulation object</span>
+<span class="kn">from</span> <span class="nn">tud_sumo.simulation</span> <span class="kn">import</span> <span class="n">print_summary</span>
+<span class="n">print_summary</span><span class="p">(</span><span class="s2">&quot;data/example_data.pkl&quot;</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code> *============================================================*
+ |                          A20_ITCS                          | 
+ *============================================================*
+ |                        Description:                        | 
+ |   Example traffic controllers, with 2 ramp meters, 1 VSL   | 
+ |        controller and 1 route guidance controller.         | 
+ *============================================================*
+ |                 Simulation Run: 10/07/2024                 | 
+ |               12:02:14 - 12:02:25 (0:00:11)                | 
+ *------------------------------------------------------------*
+ | Number of Steps:                                       500 | 
+ | Step Length:                                           1.0 | 
+ | Avg. Step Duration:                                 0.022s | 
+ | Units Type:                              Metric (km, km/h) | 
+ | Seed:                                                    1 | 
+ *============================================================*
+ |                            Data                            | 
+ *============================================================*
+ |                        Vehicle Data                        | 
+ *------------------------------------------------------------*
+ | Avg. No. Vehicles:                                  774.66 | 
+ | Peak No. Vehicles:                                    1277 | 
+ | Avg. No. Waiting Vehicles:                           34.26 | 
+ | Peak No. Waiting Vehicles:                             104 | 
+ | Final No. Vehicles:                                   1277 | 
+ | Individual Data:                                        No | 
+ * ---------------------------------------------------------- *
+ | Total TTS:                                       387332.0s | 
+ | Total Delay:                                      17132.0s | 
+ *------------------------------------------------------------*
+ |                         Trip Data                          | 
+ *------------------------------------------------------------*
+ | Incomplete Trips:                             1281 (67.2%) | 
+ | Completed Trips:                               625 (32.8%) | 
+ *------------------------------------------------------------*
+ |                         Detectors                          | 
+ *------------------------------------------------------------*
+ |               Induction Loop Detectors: (15)               | 
+ |       a13_ramp_inflow, cw_down_occ_0, cw_down_occ_1,       | 
+ |  cw_down_occ_2, cw_down_occ_3, cw_up_occ_0, cw_up_occ_1,   | 
+ |      cw_up_occ_2, rerouter_2, utsc_e_in, utsc_e_out,       | 
+ |      utsc_n_in_1, utsc_n_in_2, utsc_w_in, utsc_w_out       | 
+ |                                                            | 
+ |              Multi-Entry-Exit Detectors: (7)               | 
+ |    a13_ramp_queue, a13_rm_downstream, a13_rm_upstream,     | 
+ |      cw_ramp_inflow, cw_ramp_queue, cw_rm_downstream,      | 
+ |                       cw_rm_upstream                       | 
+ *------------------------------------------------------------*
+ |                       Tracked Edges                        | 
+ *------------------------------------------------------------*
+ | 126730026, 1191885773, 1191885771, 126730171, 1191885772,  | 
+ |         948542172, 70944365, 308977078, 1192621075         | 
+ *------------------------------------------------------------*
+ |                     Tracked Junctions                      | 
+ *------------------------------------------------------------*
+ |                     utsc (Signalised)                      | 
+ |           crooswijk_meter (Signalised, Metered)            | 
+ |              a13_meter (Signalised, Metered)               | 
+ *------------------------------------------------------------*
+ |                        Controllers                         | 
+ *------------------------------------------------------------*
+ |                    Route Guidance: (1)                     | 
+ |                          rerouter                          | 
+ |                                                            | 
+ |                 Variable Speed Limits: (1)                 | 
+ |                            vsl                             | 
+ *------------------------------------------------------------*
+ |                    Event IDs &amp; Statuses                    | 
+ *------------------------------------------------------------*
+ |                 Active: incident_response                  | 
+ |             Completed: incident_1, bottleneck              | 
+ *------------------------------------------------------------*
+</code></pre></div>
+<p>The structure of a simulation data file can also be printed using the <code>Simulation.print_sim_data_struct()</code> or <code>print_sim_data_struct()</code> functions. This will print the structure of the <code>sim_data</code> dictionary as a tree, allowing you to see the exact keys and data types used in the data. An example of the output of <code>print_sim_data_struct()</code> is shown below.</p>
+<p>Note that the dimensions of array are only displayed up to 2D. If an array has a higher dimension, this is denoted by a '<i>+</i>'. If the array is inhomogeneous (ie. its dimensions are inconsistent), this is denoted by a '<i>*</i>' and the array's maximum size is shown.</p>
+<div class="highlight"><pre><span></span><code><span class="n">my_sim</span><span class="o">.</span><span class="n">print_sim_data_struct</span><span class="p">()</span>
+
+<span class="c1"># Print structure without creating a Simulation object</span>
+<span class="kn">from</span> <span class="nn">tud_sumo.simulation</span> <span class="kn">import</span> <span class="n">print_sim_data_struct</span>
+<span class="n">print_sim_data_struct</span><span class="p">(</span><span class="s2">&quot;data/example_data.pkl&quot;</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>A20_ITCS:
+  ├─- scenario_name: str
+  ├─- scenario_desc: str
+  ├─- data:
+  |     ├─- detectors:
+  |     |     ├─- a13_ramp_queue:
+  |     |     |     ├─- type: str
+  |     |     |     ├─- position:
+  |     |     |     |     ├─- entry_lanes: list (1x1)
+  |     |     |     |     ├─- exit_lanes: list (1x1)
+  |     |     |     |     ├─- entry_positions: list (1x1)
+  |     |     |     |     └─- exit_positions: list (1x1)
+  |     |     |     ├─- speeds: list (1x500)
+  |     |     |     ├─- vehicle_counts: list (1x500)
+  |     |     |     ├─- vehicle_ids: list (500x27*)
+  |     |     |     └─- occupancies: list (1x0)
+  .     .     .
+  .     .     .
+  .     .     .
+  |     ├─- vehicles:
+  |     |     ├─- no_vehicles: list (1x500)
+  |     |     ├─- no_waiting: list (1x500)
+  |     |     ├─- tts: list (1x500)
+  |     |     └─- delay: list (1x500)
+  |     ├─- trips:
+  |     |     ├─- incomplete: dict (1x1311)
+  |     |     └─- completed: dict (1x601)
+  |     └─- events:
+  |           ├─- scheduled: list (1x1)
+  |           ├─- active: list (1x1)
+  |           └─- completed: list (1x1)
+  ├─- start: int
+  ├─- end: int
+  ├─- step_len: float
+  ├─- units: str
+  ├─- seed: int
+  ├─- sim_start: str
+  └─- sim_end: str
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
+      
+    
+  </body>
+</html>

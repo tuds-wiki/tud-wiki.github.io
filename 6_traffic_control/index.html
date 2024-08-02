@@ -1,0 +1,742 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../5_tracked_objs/">
+      
+      
+        <link rel="next" href="../7_events/">
+      
+      
+      <link rel="icon" href="../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.31">
+    
+    
+      
+        <title>Traffic Control - TUD-SUMO Wiki</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.3cba04c6.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Open Sans";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#traffic-control" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="TUD-SUMO Wiki" class="md-header__button md-logo" aria-label="TUD-SUMO Wiki" data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            TUD-SUMO Wiki
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Traffic Control
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="TUD-SUMO Wiki" class="md-nav__button md-logo" aria-label="TUD-SUMO Wiki" data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    TUD-SUMO Wiki
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_getting_started/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_basic_sim/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Basic Simulations
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4_interactions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interacting with the Simulation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_tracked_objs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tracked Objects
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Traffic Control
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Traffic Control
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#traffic-signal-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      Traffic Signal Control
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ramp-metering" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ramp Metering
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#variable-speed-limits" class="md-nav__link">
+    <span class="md-ellipsis">
+      Variable Speed Limits
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dynamic-route-guidance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dynamic Route Guidance
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7_events/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Events
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8_plotting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Plotting Data
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9_example/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Example
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#traffic-signal-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      Traffic Signal Control
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ramp-metering" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ramp Metering
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#variable-speed-limits" class="md-nav__link">
+    <span class="md-ellipsis">
+      Variable Speed Limits
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dynamic-route-guidance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dynamic Route Guidance
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="traffic-control">Traffic Control</h1>
+<h2 id="traffic-signal-control">Traffic Signal Control</h2>
+<p><img alt="Traffic Signal Control Example" src="../img/utsc.gif" /></p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>No initialisation is needed to perform dynamic traffic signal control, however, it is recommeded to create a <a href="../5_tracked_objs/">tracked junction</a> to automatically collect data from the junction.</p>
+</div>
+<p>By default, all traffic signals will use the phases set in SUMO/netedit at the beginning of the simulation. TUD-SUMO is able to override these settings and update phases automatically, which is done using a <code>phase_dict</code> as shown below. A <code>phase_dict</code> can be included in the parameters file under '<i>phases</i>' when calling <code>Simulation.load_objects()</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="n">phase_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;traffic_signal_1&quot;</span><span class="p">:</span>
+                 <span class="p">{</span><span class="s2">&quot;phases&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;GGrr&quot;</span><span class="p">,</span> <span class="s2">&quot;yyrr&quot;</span><span class="p">,</span> <span class="s2">&quot;rrGG&quot;</span><span class="p">,</span> <span class="s2">&quot;--yy&quot;</span><span class="p">],</span>
+                  <span class="s2">&quot;times&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">27</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+                 <span class="p">},</span>
+              <span class="s2">&quot;traffic_signal_2&quot;</span><span class="p">:</span>
+                 <span class="p">{</span><span class="s2">&quot;phases&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;GGrr&quot;</span><span class="p">,</span> <span class="s2">&quot;yyrr&quot;</span><span class="p">,</span> <span class="s2">&quot;rrGG&quot;</span><span class="p">,</span> <span class="s2">&quot;--yy&quot;</span><span class="p">],</span>
+                  <span class="s2">&quot;times&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+                 <span class="p">}</span>
+             <span class="p">}</span>
+</code></pre></div>
+<p>This dictionary uses two components:</p>
+<ol>
+<li><b>Phases</b>:<ul>
+<li>This contains a list of phase strings, which represent the signal status during each phase. The phase strings must be the same length as the number of movements in SUMO.</li>
+<li>Characters in the phase string can either '<i>r</i>' (red), '<i>y</i>' (yellow), '<i>g</i>' (green with no priority), '<i>G</i>' (green with priority) or '-' (do not change).</li>
+<li>The index of each character refers to the setting for the corresponding movement, which are numbered clockwise starting at north (right turns &#8594; straight &#8594; left turns), with pedestrian crossings at the end.</li>
+</ul>
+</li>
+<li><b>Times</b>:<ul>
+<li>This contains the durations <b>in seconds</b> for each corresponding phase string.</li>
+<li>Phase durations cannot be less than the simulation step length.</li>
+</ul>
+</li>
+</ol>
+<p>Once this has been created, the phases can be set using the <code>Simulation.set_phases()</code> function. <code>start_phase</code> can be used to start at different points in the phase cycle. <code>overwrite</code> determines whether to completely overwrite the phase dictionary for all signals or simply for specified signals.</p>
+<div class="highlight"><pre><span></span><code><span class="n">my_sim</span><span class="o">.</span><span class="n">set_phases</span><span class="p">(</span><span class="n">phase_dict</span><span class="p">,</span> <span class="n">start_phase</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+<p>Alternatively, it is possible to set a signal's phases indefinitely using <code>Simulation.set_tl_colour()</code>. The input can either be a regular phase string or a single character, meaning all movements are set this way. <code>Simulation.change_phase()</code> can be used to change to skip to a specific phase in the cycle.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Set &quot;traffic_signal_1&quot; permanently to all green</span>
+<span class="n">my_sim</span><span class="o">.</span><span class="n">set_tl_colour</span><span class="p">(</span><span class="s2">&quot;traffic_signal_1&quot;</span><span class="p">,</span> <span class="s2">&quot;G&quot;</span><span class="p">)</span>
+
+<span class="c1"># Set &quot;traffic_signal_2&quot; permanently to &quot;rrGG&quot;</span>
+<span class="n">my_sim</span><span class="o">.</span><span class="n">set_tl_colour</span><span class="p">(</span><span class="s2">&quot;traffic_signal_2&quot;</span><span class="p">,</span> <span class="s2">&quot;rrGG&quot;</span><span class="p">)</span>
+
+<span class="c1"># Skip &quot;traffic_signal_3&quot; to phase 3</span>
+<span class="n">my_sim</span><span class="o">.</span><span class="n">change_phase</span><span class="p">(</span><span class="s2">&quot;traffic_signal_3&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="ramp-metering">Ramp Metering</h2>
+<p>Ramp metering is a motorway control measure where a traffic light is placed at an on-ramp in order to limit flow and avoid congestion. This help an engineer fully exploit the capacity of a motorway section next to an on-ramp without exceeding it. It is also an important method of reducing the impact of capacity drop, where the measured outflow from a bottleneck is significantly lower than the expected outflow. The most commonly used ramp metering algorithm in practice is Asservissement Linéaire d'entrée Autoroutiere (ALINEA).</p>
+<p><img alt="Ramp Meter Example" src="../img/rm_example.gif" /></p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>No initialisation is needed to perform ramp metering, however, it is recommeded to create a <a href="../5_tracked_objs/">tracked junction</a> to automatically collect data from the meter.</p>
+</div>
+<p>Like a regular traffic signal, ramp meters will follow the phases defined within SUMO/netedit by default. Otherwise, initialising the ramp meter as a tracked junction will allow you to set an initial metering rate, which will start at the next simulation step.</p>
+<div class="highlight"><pre><span></span><code><span class="n">my_sim</span><span class="o">.</span><span class="n">add_tracked_junctions</span><span class="p">({</span><span class="s2">&quot;ramp_meter&quot;</span><span class="p">:</span>
+                                <span class="p">{</span><span class="s1">&#39;meter_params&#39;</span><span class="p">:</span>
+                                    <span class="p">{</span><span class="s1">&#39;min_rate&#39;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>  <span class="c1"># Minimum allowed metering rate</span>
+                                    <span class="s1">&#39;max_rate&#39;</span><span class="p">:</span> <span class="mi">2000</span><span class="p">,</span>  <span class="c1"># Maximum allowed metering rate</span>
+                                    <span class="s1">&#39;init_rate&#39;</span><span class="p">:</span> <span class="mi">1800</span><span class="p">,</span> <span class="c1"># Initial metering rate</span>
+                                    <span class="s1">&#39;queue_detector&#39;</span><span class="p">:</span> <span class="s2">&quot;ramp_queue&quot;</span><span class="p">},</span>
+                                <span class="s1">&#39;flow_params&#39;</span><span class="p">:</span>
+                                    <span class="p">{</span><span class="s1">&#39;inflow_detectors&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;ramp_inflow&quot;</span><span class="p">,</span> <span class="s2">&quot;ramp_upstream&quot;</span><span class="p">],</span>
+                                    <span class="s1">&#39;outflow_detectors&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;ramp_downstream&quot;</span><span class="p">]}</span>
+                                <span class="p">}</span>
+                            <span class="p">})</span>
+</code></pre></div>
+<p>The ramp metering rate can then be set as below. Note that all metering rates are defined <b>in vehicles/hour</b>.</p>
+<div class="highlight"><pre><span></span><code><span class="n">my_sim</span><span class="o">.</span><span class="n">set_tl_metering_rate</span><span class="p">(</span><span class="n">rm_id</span><span class="o">=</span><span class="s2">&quot;ramp_meter&quot;</span><span class="p">,</span> <span class="n">metering_rate</span><span class="o">=</span><span class="mi">1500</span><span class="p">)</span>
+</code></pre></div>
+<p>Ramp meters use the exact same logic and <code>phase_dict</code> as traffic signals to operate, except the <code>Simulation.set_tl_metering_rate()</code> function calculates a phase setting that would result in the desired flow. This is primarily done by varying the red time. The settings can be changed using the parameters:</p>
+<ul>
+<li><code>g_time</code>: Green time, defaults to 1s for a one-car-per-green policy.</li>
+<li><code>y_time</code>: Yellow time, defaults to 1s.</li>
+<li><code>min_red</code>: Minimum red time. If the flow would require a red time less than this, the meter is set to green for the duration of the control interval.</li>
+<li><code>control_interval</code>: Control interval length in seconds (control interval % resulting cycle length = 0, ie. phases will loop seamlessly with each control interval).</li>
+</ul>
+<p>If the junction is tracked, all ramp metering data will be stored under '<i>data/junctions/{meter_id}/meter</i>', and will contain '<i>metering_rates</i>', '<i>rate_times</i>', '<i>queue_lengths</i>', '<i>queue_delays</i>', '<i>min_rate</i>' and '<i>max_rate</i>'.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Note that as ramp meters use the same logic as adaptive traffic signals, it is possible to accidentally overwrite their settings when using <code>Simulation.set_phases()</code>.</p>
+</div>
+<h2 id="variable-speed-limits">Variable Speed Limits</h2>
+<p>Variable Speed Limits (VSL), also called dynamic speed limits, are a method of motorway traffic control where speed limits on road sections are dynamically changed based on conditions. A major advantage of this can be the increased safety, as VSL will often aim to lower and homogenise vehicle speeds, although it can also be used to limit congestion by 'holding back' vehicles and 'storing' them away from congested areas of a network. In practice, VSL is implemented through variable message signs on gantries above the motorway.</p>
+<p>VSL can be simulated using a <code>VSLController</code> object. These can be added with the <code>Simulation.add_controllers()</code> function with their parameters in a dictionary as below. Multiple VSL and Dynamic Route Guidance (RG) controllers can be created in the same parameter dictionary. This can also be included under '<i>controllers</i>' when calling <code>Simulation.load_objects()</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="n">vsl_parameters</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;vsl_controller&quot;</span><span class="p">:</span>
+                     <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;VSL&quot;</span><span class="p">,</span>
+                      <span class="s2">&quot;geometry_ids&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;edge_1&quot;</span><span class="p">,</span> <span class="s2">&quot;edge_2&quot;</span><span class="p">,</span> <span class="s2">&quot;edge_3&quot;</span><span class="p">],</span>
+                      <span class="s2">&quot;default_limit&quot;</span><span class="p">:</span> <span class="mi">80</span>
+                     <span class="p">}</span>
+                 <span class="p">}</span>
+<span class="n">my_sim</span><span class="o">.</span><span class="n">add_controllers</span><span class="p">(</span><span class="n">vsl_parameters</span><span class="p">)</span>
+</code></pre></div>
+<p>Both '<i>type</i>' and '<i>geometry_ids</i>' are the only required parameters. '<i>type</i>' should be set to '<i>VSL</i>' to create a VSL controller, whilst '<i>geometry_ids</i>' is a list containing the IDs of edges under control. Note that controlled geometries can be either edges or lanes. '<i>default_limit</i>' is an optional parameter denoting the default speed limit.</p>
+<p>A VSL controller can also be created by directly initialising the object with the same parameters dictionary, however, it must be added to the simulation to operate.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">tud_sumo.controllers</span> <span class="kn">import</span> <span class="n">VSLController</span>
+
+<span class="n">vsl_controller</span> <span class="o">=</span> <span class="n">VSLController</span><span class="p">(</span><span class="n">vsl_id</span><span class="o">=</span><span class="s2">&quot;vsl_controller&quot;</span><span class="p">,</span> <span class="n">vsl_params</span><span class="o">=</span><span class="n">vsl_parameters</span><span class="p">,</span> <span class="n">simulation</span><span class="o">=</span><span class="n">my_sim</span><span class="p">)</span>
+<span class="n">my_sim</span><span class="o">.</span><span class="n">add_controllers</span><span class="p">({</span><span class="s2">&quot;vsl_controller&quot;</span><span class="p">:</span> <span class="n">vsl_controller</span><span class="p">})</span>
+</code></pre></div>
+<p>The controller will initialise as deactivated, meaning the controlled edges/lanes will use their default speed limits/maximum speed as defined in SUMO/netedit. However, it can be activated using the <code>VSLController.set_speed_limit()</code> function as below. This can either be used to activate the VSL with a new speed limit value, or to activate the VSL with the previously used speed limit or default value. Note that <b>the same speed limit is set for all controlled edges/lanes</b>.</p>
+<p>The VSL controller can then be deactivated using the <code>VSLController.deactivate()</code> function. This will set all edges/lanes to their original speed limit as defined in SUMO/netedit.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Activate controller, setting speed limit to 60kmph</span>
+<span class="n">my_sim</span><span class="o">.</span><span class="n">controllers</span><span class="p">[</span><span class="s2">&quot;vsl_controller&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">set_speed_limit</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
+
+<span class="c1"># Deactivate the control, set speed limits to no-control values</span>
+<span class="n">my_sim</span><span class="o">.</span><span class="n">controllers</span><span class="p">[</span><span class="s2">&quot;vsl_controller&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">deactivate</span><span class="p">()</span>
+
+<span class="c1"># Reactivate controller, setting speed limit to last used value (60kmph)</span>
+<span class="n">my_sim</span><span class="o">.</span><span class="n">controllers</span><span class="p">[</span><span class="s2">&quot;vsl_controller&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">set_speed_limit</span><span class="p">()</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">my_sim</span><span class="o">.</span><span class="n">controllers</span><span class="p">[</span><span class="s2">&quot;vsl_controller&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">activated</span>
+<span class="kc">True</span>
+</code></pre></div>
+<p>VSL controllers will automatically register and save the changes in speed limit, and the times at which they occur. This data is stored in the <code>sim_data</code> dictionary under '<i>data/controllers/{vsl_id}/activation_times</i>'. This stores a series of tuples where the first value is the speed limit setting and the second value is the time step this setting was made. Speed limits of -1 denote the controller is being deactivated. Otherwise, the average speed on controlled edges/lanes throughout the simulation is also collected under '<i>data/controllers/{vsl_id}/geometry_data/{geometry_id}/avg_speeds</i>'.</p>
+<p>VSL controller data can be reset using <code>VSLController.reset()</code>, or the controller itself can be removed using <code>Simulation.remove_controllers()</code>.</p>
+<h2 id="dynamic-route-guidance">Dynamic Route Guidance</h2>
+<p>Dynamic Route Guidance (RG) is a method of traffic management where vehicles are rerouted in order to avoid exceeding capacity on certain roads. This can be particularly useful in cases of non-recurrent congestion, such as during an accident, as drivers can be advised to avoid affected roads and given guidance on alternative routes. In practice, this is typically implemented for motorway traffic management with variable message signs above the road, although information can be transmitted directly to drivers with Vehicle-to-Infrastructure (V2I) technology.</p>
+<p><img alt="Route Guidance Example" src="../img/rg_example.gif" /></p>
+<p>RG can be simulated using a <code>VSLController</code> object. These can be added with the <code>Simulation.add_controllers()</code> function with their parameters in a dictionary as below. Multiple RG and Variable Speed Limit (VSL) controllers can be created in the same parameter dictionary. This can also be included under '<i>controllers</i>' when calling <code>Simulation.load_objects()</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="n">rg_parameters</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;rg_controller&quot;</span><span class="p">:</span>
+                    <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;RG&quot;</span><span class="p">,</span>
+                     <span class="s2">&quot;detector_ids&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;induction_loop_1&quot;</span><span class="p">],</span>
+                     <span class="s2">&quot;old_destination&quot;</span><span class="p">:</span> <span class="s2">&quot;off_ramp_1&quot;</span><span class="p">,</span>
+                     <span class="s2">&quot;new_destination&quot;</span><span class="p">:</span> <span class="s2">&quot;off_ramp_2&quot;</span><span class="p">,</span>
+                     <span class="s2">&quot;diversion_pct&quot;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>
+                     <span class="s2">&quot;vehicle_type&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;cars&quot;</span><span class="p">,</span> <span class="s2">&quot;lorries&quot;</span><span class="p">,</span> <span class="s2">&quot;motorcycles&quot;</span><span class="p">,</span> <span class="s2">&quot;vans&quot;</span><span class="p">],</span>
+                     <span class="s2">&quot;highlight&quot;</span><span class="p">:</span> <span class="s2">&quot;00FF00&quot;</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+<span class="n">my_sim</span><span class="o">.</span><span class="n">add_controllers</span><span class="p">(</span><span class="n">rg_parameters</span><span class="p">)</span>
+</code></pre></div>
+<p>The only required parameters are '<i>type</i>' and '<i>detector_ids</i>'. '<i>type</i>' should be set to '<i>RG</i>' to create a RG controller, whilst '<i>detector_ids</i>' is a list containing the IDs of <b>induction loop</b> detectors that will act as the point where vehicles are redirected. All other parameters are optional and are detailed below.</p>
+<ul>
+<li>'<i>old_destination</i>': Edge ID. If given, only vehicles with this as their destination will be redirected.</li>
+<li>'<i>new_destination</i>': Edge ID. If given, this is used as the default new destination for redirected vehicles.</li>
+<li>'<i>diversion_pct</i>': Float [0-1]. This acts as a probability of redirection for vehicles to simulate compliance. The default is 100%.</li>
+<li>'<i>vehicle_type</i>': List of vehicle types for redirected vehicles.</li>
+<li>'<i>highlight</i>': Hex code or list of rgba values. If given, redirected values are recoloured.</li>
+</ul>
+<p>A RG controller can also be created by directly initialising the object with the same parameters dictionary, however, it must be added to the simulation to operate.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">tud_sumo.controllers</span> <span class="kn">import</span> <span class="n">RGController</span>
+
+<span class="n">rg_controller</span> <span class="o">=</span> <span class="n">RGController</span><span class="p">(</span><span class="n">vsl_id</span><span class="o">=</span><span class="s2">&quot;rg_controller&quot;</span><span class="p">,</span> <span class="n">rg_params</span><span class="o">=</span><span class="n">rg_parameters</span><span class="p">,</span> <span class="n">simulation</span><span class="o">=</span><span class="n">my_sim</span><span class="p">)</span>
+<span class="n">my_sim</span><span class="o">.</span><span class="n">add_controllers</span><span class="p">({</span><span class="s2">&quot;rg_controller&quot;</span><span class="p">:</span> <span class="n">rg_controller</span><span class="p">})</span>
+</code></pre></div>
+<p>The controller will initialise as deactivated, meaning no vehicles are redirected, however, it can be activated using the <code>RGController.activate()</code> function. Similarly to VSL controllers, this can either be used to activate the RG with a new redirection target or '<i>new_destination</i>', or to activate the RG with the previously used target or default value. The diversion percent or highlight can also be changed.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Activate controller &amp; redirect vehicles to &#39;off_ramp_2&#39;</span>
+<span class="n">my_sim</span><span class="o">.</span><span class="n">controllers</span><span class="p">[</span><span class="s2">&quot;vsl_controller&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">activate</span><span class="p">(</span><span class="s2">&quot;off_ramp_2&quot;</span><span class="p">)</span>
+
+<span class="c1"># Deactivate the control &amp; stop redirecting vehicles</span>
+<span class="n">my_sim</span><span class="o">.</span><span class="n">controllers</span><span class="p">[</span><span class="s2">&quot;vsl_controller&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">deactivate</span><span class="p">()</span>
+
+<span class="c1"># Reactivate controller &amp; redirect vehicles to &#39;off_ramp_3</span>
+<span class="n">my_sim</span><span class="o">.</span><span class="n">controllers</span><span class="p">[</span><span class="s2">&quot;vsl_controller&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">activate</span><span class="p">(</span><span class="s2">&quot;off_ramp_3&quot;</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">my_sim</span><span class="o">.</span><span class="n">controllers</span><span class="p">[</span><span class="s2">&quot;rg_controller&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">activated</span>
+<span class="kc">True</span>
+</code></pre></div>
+<p>RG controllers will automatically register and save changes, and the times at which they occur. This data is stored in the <code>sim_data</code> dictionary under '<i>data/controllers/{rg_id}/activation_times</i>'.</p>
+<p>This stores a series of tuples where the first value is the new destination that vehicles are redirected towards, the second value is the diversion percent and the third is the time this change was made. A destination and diversion percent value of -1 denote the controller is being deactivated. Otherwise, the number of vehicles redirected throughout the simulation is also collected under '<i>data/controllers/{rg_id}/n_diverted</i>'.</p>
+<p>New route objects can be created using <a href="../4_interactions/#addingremoving-vehicles"><code>Simulation.add_route()</code></a>. Vehicles can then be redirected using the ID for the new route.</p>
+<p>VSL controller data can be reset using <code>VSLController.reset()</code>, or the controller itself can be removed using <code>Simulation.remove_controllers()</code>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
+      
+    
+  </body>
+</html>

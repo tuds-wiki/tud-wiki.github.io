@@ -1,0 +1,637 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../4_interactions/">
+      
+      
+        <link rel="next" href="../6_traffic_control/">
+      
+      
+      <link rel="icon" href="../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.31">
+    
+    
+      
+        <title>Tracked Objects - TUD-SUMO Wiki</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.3cba04c6.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Open Sans";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#tracked-objects" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="TUD-SUMO Wiki" class="md-header__button md-logo" aria-label="TUD-SUMO Wiki" data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            TUD-SUMO Wiki
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Tracked Objects
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="TUD-SUMO Wiki" class="md-nav__button md-logo" aria-label="TUD-SUMO Wiki" data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    TUD-SUMO Wiki
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_getting_started/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_basic_sim/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Basic Simulations
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4_interactions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interacting with the Simulation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Tracked Objects
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Tracked Objects
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tracked-junctions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tracked Junctions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tracked-edges" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tracked Edges
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6_traffic_control/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Traffic Control
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7_events/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Events
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8_plotting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Plotting Data
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9_example/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Example
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tracked-junctions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tracked Junctions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tracked-edges" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tracked Edges
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="tracked-objects">Tracked Objects</h1>
+<p>Tracked objects are a useful way to include extra objects in the automatic data collection. Whilst all data from every detector is automatically included, specific scenarios may contain a large number of edges or junctions. Therefore, important edges or junctions can be tracked to automatically collect more specific information, such as inflow or average speeds. Tracked objects are also supported within the <a href="../8_plotting/">plotter</a> class, so that phase signal diagrams or space-time diagrams can easily be plotted with significantly less effort.</p>
+<p>Currently, only edges and junctions can be tracked, although this may change in the future.</p>
+<h2 id="tracked-junctions">Tracked Junctions</h2>
+<p>There are two types of tracked junctions; regular junctions and metered junctions. Most intersections will only need to be tracked as a regular junction, whilst metered junctions are a subclass of junction that include some extra tracking for motorway on-ramp metering.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Note that traffic light/ramp meter control itself is not discussed here. <b>An adaptive traffic signal or ramp meter does not have to be tracked</b> and not all tracked junctions require some control. Tracking a junction with an adaptive traffic signal or ramp meter simply adds a level of data collection, however, <b>it is recommended</b> and makes evaluation of the controllers much easier.</p>
+</div>
+<p>All parameters to create a tracked junction are given as a dictionary and is done using the <code>Simulation.add_tracked_junctions()</code> function. This can be in code, or from a '<i>.json</i>' or '<i>.pkl</i>' file. Tracked junctions can also be included in the object parameters file when calling <code>Simulation.load_objects()</code>, under '<i>junctions</i>'. A tracked junction can be initialised at 3 different levels, depending on the amount of data collection required.</p>
+<ol>
+<li>
+<p>Signal tracking only:</p>
+<ul>
+<li>This is the lowest level of tracking, where only signal phases and average green/red times are tracked. Therefore, this level is only useful when the specified junction has a traffic light.</li>
+<li>In this case, the only required parameters are the junction ID or a list of junction IDs. It is recommended to give junctions and their traffic lights the same ID in SUMO in order to avoid confusion.</li>
+</ul>
+</li>
+<li>
+<p>Inflow/outflow tracking:</p>
+<ul>
+<li>Traffic-flow related variables can be tracked by tracked junctions, however, it is necessary to define the detectors used to do so.</li>
+<li>Here, the input for <code>Simulation.add_tracked_junctions()</code> is a dictionary, where each junction has a '<i>flow_params</i>' value. This is a dictionary containing '<i>inflow_detectors</i>', '<i>outflow_detectors</i>' and '<i>vehicle_types</i>'. '<i>inflow_detectors</i>' and '<i>outflow_detectors</i>' are lists containing the detectors that will be used to register vehicles entering and exiting the junction, whilst '<i>vehicle_types</i>' is an optional parameter that lists the vehicle types that should be registered (defaults to all).</li>
+</ul>
+</li>
+<li>
+<p>Metered junctions:</p>
+<ul>
+<li>Metered junctions adds options for tracking queuing variables; queue length, queue delay and spillback. This is primarily designed for use in ramp metering systems.</li>
+<li>Here, the input for <code>Simulation.add_tracked_junctions()</code> is a dictionary, where each junction has a 'meter_params' value. This is a dictionary containing '<i>min_rate</i>', '<i>max_rate</i>', '<i>init_rate</i>', '<i>queue_detector</i>' and '<i>ramp_edges</i>'. These are detailed below, however, flow can still be tracked as above.</li>
+<li>'<i>min_rate</i>' is a required parameter denoting the minimum allowed metering rate.</li>
+<li>'<i>max_rate</i>' is a required parameter denoting the maximum allowed metering rate.</li>
+<li>'<i>init_rate</i>' denotes the initial metering rate set after initialisation.</li>
+<li>'<i>queue_detector</i>' is the ID of a <b>multi-entry-exit detector</b> that should be placed on the on-ramp. The entry detector should be placed at the start of the on-ramp, and the exit detector just before the traffic light. If given, queue length and delay at each step is tracked automatically.</li>
+<li>If you would like to track vehicle spillback, provide the list of edge IDs that make up the ramp under the '<i>ramp_edges</i>' parameter. This can also be used instead of '<i>queue_detector</i>' to track queue length and delay, however, this approach is much slower. Tracking spillback in this way will only work when vehicles are inserted directly onto the on-ramp (ie. no urban roads connect to the on-ramp), and requires checking all unloaded vehicles of their insertion edge which can be slow.</li>
+</ul>
+</li>
+</ol>
+<p>Examples of these different levels are shown below.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Level 1: Only signal phases &amp; green/red times are tracked</span>
+<span class="n">my_sim</span><span class="o">.</span><span class="n">add_tracked_junctions</span><span class="p">([</span><span class="s2">&quot;traffic_signal_1&quot;</span><span class="p">,</span> <span class="s2">&quot;traffic_signal_2&quot;</span><span class="p">])</span>
+
+<span class="c1"># Level 2: Track inflow/outflow (&amp; signal phases &amp; green/red times)</span>
+<span class="n">my_sim</span><span class="o">.</span><span class="n">add_tracked_junctions</span><span class="p">({</span><span class="s2">&quot;traffic_signal_3&quot;</span><span class="p">:</span>
+                                <span class="p">{</span><span class="s2">&quot;flow_params&quot;</span><span class="p">:</span>
+                                    <span class="p">{</span><span class="s2">&quot;inflow_detectors&quot;</span><span class="p">:</span>  <span class="p">[</span><span class="s2">&quot;det_in_1&quot;</span><span class="p">,</span> <span class="s2">&quot;det_in_2&quot;</span><span class="p">],</span>
+                                     <span class="s2">&quot;outflow_detectors&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;det_out_1&quot;</span><span class="p">,</span> <span class="s2">&quot;det_out_2&quot;</span><span class="p">],</span>
+                                     <span class="s2">&quot;vehicle_types&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;cars&quot;</span><span class="p">,</span> <span class="s2">&quot;lorries&quot;</span><span class="p">,</span> <span class="s2">&quot;motorcycles&quot;</span><span class="p">,</span> <span class="s2">&quot;vans&quot;</span><span class="p">]}</span>
+                                <span class="p">}</span>
+                            <span class="p">})</span>
+
+<span class="c1"># Level 3: Track metering (&amp; inflow/outflow &amp; signal phases &amp; green/red times)</span>
+<span class="n">my_sim</span><span class="o">.</span><span class="n">add_tracked_junctions</span><span class="p">({</span><span class="s2">&quot;ramp_meter&quot;</span><span class="p">:</span>
+                                <span class="p">{</span><span class="s2">&quot;meter_params&quot;</span><span class="p">:</span>
+                                    <span class="p">{</span><span class="s2">&quot;min_rate&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
+                                    <span class="s2">&quot;max_rate&quot;</span><span class="p">:</span> <span class="mi">2000</span><span class="p">,</span>
+                                    <span class="s2">&quot;queue_detector&quot;</span><span class="p">:</span> <span class="s2">&quot;ramp_queue&quot;</span><span class="p">},</span>
+                                <span class="s2">&quot;flow_params&quot;</span><span class="p">:</span>
+                                    <span class="p">{</span><span class="s2">&quot;inflow_detectors&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;ramp_inflow&quot;</span><span class="p">,</span> <span class="s2">&quot;ramp_upstream&quot;</span><span class="p">],</span>
+                                    <span class="s2">&quot;outflow_detectors&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;ramp_downstream&quot;</span><span class="p">]}</span>
+                                <span class="p">}</span>
+                            <span class="p">})</span>
+</code></pre></div>
+<p>All data from tracked junctions is stored in the <code>sim_data</code> dictionary under '<i>data/junctions/{junction_id}</i>'. This will contain the junction's '<i>position</i>', '<i>init_time</i>' and '<i>curr_time</i>' (referring to the start and ent time of the data collection). Phase data is then stored under '<i>tl</i>', whilst flow and metering data are under '<i>flow</i>' and '<i>meter</i>' respectively.</p>
+<p>Data collection for tracked junctions can be reset using the function below, however, data collection is also reset when using <code>Simulation.reset_data()</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="n">my_sim</span><span class="o">.</span><span class="n">tracked_junctions</span><span class="p">[</span><span class="s2">&quot;traffic_signal_1&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+</code></pre></div>
+<h2 id="tracked-edges">Tracked Edges</h2>
+<p>Tracked edges are very simple to initialise, but include a lot of useful data collection. Edges are tracked using only their ID with the <code>Simulation.add_tracked_edges()</code> function.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Add all edges as a tracked edge</span>
+<span class="n">my_sim</span><span class="o">.</span><span class="n">add_tracked_edges</span><span class="p">()</span>
+
+<span class="c1"># Add a list of edges as tracked edges</span>
+<span class="n">my_sim</span><span class="o">.</span><span class="n">add_tracked_edges</span><span class="p">([</span><span class="s2">&quot;edge_1&quot;</span><span class="p">,</span> <span class="s2">&quot;edge_2&quot;</span><span class="p">,</span> <span class="s2">&quot;edge_3&quot;</span><span class="p">,</span> <span class="s2">&quot;edge_4&quot;</span><span class="p">,</span> <span class="s2">&quot;edge_5&quot;</span><span class="p">])</span>
+</code></pre></div>
+<p>All data from tracked edges is stored in the <code>sim_data</code> dictionary under '<i>data/edges/{edge_id}</i>'. The main data collected is under '<i>data/edges/{edge_id}/step_vehicles</i>'. This includes the vehicle ID, position, speed and lane index for all vehicles on the edge at each step. This precise data is used to plot trajectories and space-time diagrams.</p>
+<p>The step vehicle data is stored in a (4x1) array as follows:</p>
+<ol>
+<li>Vehicle ID</li>
+<li>Vehicle position measured as [0 - 1], denoting percent travelled along the edge</li>
+<li>Vehicle speed in <code>Simulation</code> class units</li>
+<li>Lane index [0 - no. lanes]</li>
+</ol>
+<p>Tracked edges collect average speed, flow and density at each time step and store these values in a list. Funamental diagrams can be plotted with <code>TrackedEdge</code> data using the <code>Plotter.plot_fundamental_diagram()</code> function, but it is possible to return the individual values. This data is stored in the <code>sim_data</code> dictionary under '<i>data/edges/{edge_id}/speeds</i>', '<i>data/edges/{edge_id}/flows</i>' and '<i>data/edges/{edge_id}/densities</i>', but can be fetched from the <code>TrackedEdge</code> object as below. A value of -1 denotes that there were no vehicles on the edge during the step.</p>
+<div class="highlight"><pre><span></span><code><span class="n">speeds</span>    <span class="o">=</span> <span class="n">my_sim</span><span class="o">.</span><span class="n">tracked_edges</span><span class="p">[</span><span class="s2">&quot;edge_1&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">speeds</span>
+<span class="n">flows</span>     <span class="o">=</span> <span class="n">my_sim</span><span class="o">.</span><span class="n">tracked_edges</span><span class="p">[</span><span class="s2">&quot;edge_1&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">flows</span>
+<span class="n">densities</span> <span class="o">=</span> <span class="n">my_sim</span><span class="o">.</span><span class="n">tracked_edges</span><span class="p">[</span><span class="s2">&quot;edge_1&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">densities</span>
+</code></pre></div>
+<p>'<i>linestring</i>', '<i>length</i>', '<i>to_node</i>', '<i>from_node</i>', '<i>n_lanes</i>', '<i>init_time</i>' and '<i>curr_time</i>' are also stored for each edge.</p>
+<p>Data collection for specific tracked edges can be reset using the function below, however, data collection is also reset when using <code>Simulation.reset_data()</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="n">my_sim</span><span class="o">.</span><span class="n">tracked_edges</span><span class="p">[</span><span class="s2">&quot;edge_1&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
+      
+    
+  </body>
+</html>
